@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include './partials/_head.html' %}
+    <title>JPC Elétrica e Hidráulica</title>
+</head>
+
+<body>
+    {% include './partials/_header.html' %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include './partials/_footer.html' %}
+
+    <!-- SCRIPTS -->
+    <script>
+        function preview() {
+        frame.src = URL.createObjectURL(event.target.files[0]);
+        document.querySelector('#frame').classList.add('frame-img')
+        }
+        function clearImage() {
+        document.getElementById('formFile').value = null;
+        frame.src = "";
+        document.querySelector('#frame').classList.remove('frame-img');
+        }
+    </script>
+</body>
+
+</html>
