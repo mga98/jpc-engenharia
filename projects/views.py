@@ -6,4 +6,4 @@ def home(request):
 
 
 def projects_view(request):
-    return render(request)
+    return render(request, 'projects/pages/projects.html')
