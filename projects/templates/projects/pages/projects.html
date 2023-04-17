@@ -1,7 +1,22 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="mt-5 pt-5">Projects</h1>
+    <div class="container py-5 case">
+        <h2 class="display-3">Projetos concluidos</h2>
+            <div class="row align-items-center py-5">
+                {% for project in projects %}
+                    <div class="col-md-6">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <h3 class="display-5">{{ project.title }}</h3>
+                                <a class="text-center" href="">Ver mais...</a>
+                            </div>
+                            <div class="col-8 px-5">
+                                <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
     </div>
 {% endblock content %}

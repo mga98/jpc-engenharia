@@ -1,0 +1,12 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5 pt-5">Projects</h1>
+
+        <p>{{ project.title }}</p>
+        <img src="{{ project.thumbnail.url }}" alt="">
+        <p>{{ project.author }}</p>
+   
+    </div>
+{% endblock content %}
