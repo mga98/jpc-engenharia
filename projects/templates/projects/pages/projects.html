@@ -1,22 +1,38 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-    <div class="container py-5 case">
-        <h2 class="display-3">Projetos concluidos</h2>
-            <div class="row align-items-center py-5">
-                {% for project in projects %}
-                    <div class="col-md-6">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <h3 class="display-5">{{ project.title }}</h3>
-                                <a class="text-center" href="">Ver mais...</a>
-                            </div>
-                            <div class="col-8 px-5">
-                                <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
-                            </div>
+    <div class="container projects py-3 case">
+        <h2 class="display-3 pb-3">Projetos concluidos</h2>
+        <div class="row pt-3">
+            {% for project in projects %}
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-card-img">
+                            <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
+                        </div>
+                        <div class="project-card-body px-4 pb-3">
+                            <h3 class="display-6 text-center py-2">{{ project.title }}</h3>
+                            <a class="text-center h6" href="">Ver mais...</a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
+        </div>
+        <h2 class="display-3 pb-3">Projetos em andamento</h2>
+        <div class="row pt-3">
+            {% for project in projects %}
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-card-img">
+                            <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
+                        </div>
+                        <div class="project-card-body px-4 pb-3">
+                            <h3 class="display-6 text-center py-2">{{ project.title }}</h3>
+                            <a class="text-center h5" href="">Ver mais...</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}

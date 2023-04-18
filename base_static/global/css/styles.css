@@ -39,9 +39,8 @@ body {
 }
 
 .btn.btn-primary:hover {
-    background-color: var(--color-secondary);
-    border-color:var(--color-primary);
-    color:var(--color-primary);
+    background-color: rgb(2, 171, 149);
+    border-color: rgb(2, 171, 149);
 }
 
 .btn.btn-secondary {
@@ -157,10 +156,6 @@ body {
     margin-top: 82px;
 }
 
-.case img {
-    width: 500px;
-}
-
 /* PROJECTS */
 
 .projects .col-md-5 {
@@ -261,6 +256,45 @@ body {
     height: 400px;
     width: 100%;
   }
+
+/* PROJECTS PAGE */
+
+.projects h2 {
+    border-bottom: 1px solid #939393;
+}
+
+.project-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: scale(1.01);
+}
+
+.project-card-body {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.61);
+    width: 100%;
+    height: 100%;
+    color: var(--color-secondary);
+}
+
+.project-card-body a {
+    color: var(--color-primary);
+}
+
+.project-card:hover > .project-card-body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
 
 /* FOOTER */
 
