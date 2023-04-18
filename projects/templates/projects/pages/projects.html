@@ -4,7 +4,7 @@
     <div class="container projects py-3 case">
         <h2 class="display-3 pb-3">Projetos concluidos</h2>
         <div class="row pt-3">
-            {% for project in projects %}
+            {% for project in completed_projects %}
                 <div class="col-md-4 mb-4">
                     <div class="project-card">
                         <div class="project-card-img">
@@ -20,7 +20,7 @@
         </div>
         <h2 class="display-3 pb-3">Projetos em andamento</h2>
         <div class="row pt-3">
-            {% for project in projects %}
+            {% for project in ongoing_projects %}
                 <div class="col-md-4 mb-4">
                     <div class="project-card">
                         <div class="project-card-img">

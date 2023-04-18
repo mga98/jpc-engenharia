@@ -12,12 +12,19 @@ def home(request):
 
 
 def projects_view(request):
-    projects = Project.objects.all().order_by('-id')
+    completed_projects = Project.objects.filter(
+        status=True,
+    ).order_by('-id')
+
+    ongoing_projects = Project.objects.filter(
+        status=False,
+    ).order_by('-id')
 
     return render(
         request, 'projects/pages/projects.html',
         context={
-            'projects': projects,
+            'completed_projects': completed_projects,
+            'ongoing_projects': ongoing_projects,
         }
     )
 
