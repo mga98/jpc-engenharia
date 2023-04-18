@@ -43,37 +43,9 @@
                 <div class="container col-12">
 
                     <!-- NEW PROJECT FORM -->
-                    <form action="" class="mt-md-4 bg-dark rounded">
-                    <div class="row justify-content-center">
-                        <div class="col-12 mb-4">
-                        <label for="project-name" class="form-label">Nome do projeto:</label>
-                        <input type="text" class="form-control" name="project-name" required
-                            placeholder="Digite o nome do projeto">
-                        </div>
-                        <div class="col-12 mb-4">
-                        <p>Status do projeto:</p>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Pronto</option>
-                            <option value="1">Em andamento</option>
-                        </select>
-                        </div>
-                        <div class="col-12 mb-4">
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Foto de
-                            capa:</label>
-                            <img id="frame" src="" class="img-fluid" />
-                            <input class="form-control" type="file" id="formFile" onchange="preview()">
-                        </div>
-                        </div>
-                        <div class="col-12 mb-4">
-                        <div class="mb-3">
-                            <label for="formFileMultiple" class="form-label">Fotos:</label>
-                            <input class="form-control" type="file" id="formFileMultiple" multiple>
-                        </div>
-                        </div>
-                        <button onclick="clearImage()" type="submit"
-                        class="col-11 btn btn-outline-primary">Adicionar</button>
-                    </div>
+                    <form action="{% url 'projects:projects_add' %}" class="mt-md-4 bg-dark rounded">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                     </form>
 
                 </div>

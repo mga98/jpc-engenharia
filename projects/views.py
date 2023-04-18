@@ -28,30 +28,21 @@ def projects_view(request):
         }
     )
 
+def projects_add(request):
+    form = ProjectForm()
 
-# def projects_add(request):
-#     project_form = ProjectForm()
-#     pictures_form = PicturesForm()
+    if request.method == 'POST':
+        form = ProjectForm(request.POST or None)
 
-#     if request.method == 'POST':
-#         project_form = ProjectForm(request.POST, request.FILES)
-#         pictures_form = PicturesForm(request.POST, request.FILES)
+        if form.is_valid():
+            pass
 
-#         images = request.FILES.getList('image')
+            return redirect(reverse('projects:home'))
 
-#         if project_form.is_valid() and pictures_form.is_valid():
-#             title = project_form.cleaned_data['title']
-
-#             project = Project.objects.create(
-#                 title=title,
-#                 author=request.user,
-#                 status=True,
-#             )
-
-#             for i in images:
-#                 Pictures.objects.create(
-#                     project=project,
-#                     image=i,
-#                 )
-
-#             return redirect(reverse('projects:home'))
+    return render(
+        request,
+        'global/partials/_header.html',
+        context={
+            'form': form
+        }
+    )
