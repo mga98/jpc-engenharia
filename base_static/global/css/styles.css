@@ -1,13 +1,18 @@
+:root {
+    --color-primary: rgb(2, 197, 171);
+    --color-secondary: rgb(231, 231, 231);
+}
+
 a {
     text-decoration: none;
 }
 
 body {
-    background-color: rgb(231, 231, 231);
+    background-color: var(--color-secondary);
 }
 
 .bg-secondary-color {
-    background-color: rgb(2, 197, 171);
+    background-color: var(--color-primary);
     color: white;
     padding: 20px 0;
 }
@@ -19,61 +24,61 @@ body {
 }
 
 .btn.btn-outline-primary {
-    border-color:rgb(2, 197, 171);
-    color:rgb(2, 197, 171);
+    border-color:var(--color-primary);
+    color:var(--color-primary);
 }
 
 .btn.btn-outline-primary:hover {
-    background-color: rgb(2, 197, 171);
+    background-color: var(--color-primary);
     color: white;
 }
 
 .btn.btn-primary {
-    background-color: rgb(2, 197, 171);
-    border-color: rgb(2, 197, 171);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .btn.btn-primary:hover {
-    background-color: rgb(231, 231, 231);
-    border-color:rgb(2, 197, 171);
-    color:rgb(2, 197, 171);
+    background-color: var(--color-secondary);
+    border-color:var(--color-primary);
+    color:var(--color-primary);
 }
 
 .btn.btn-secondary {
-    background-color: rgb(231, 231, 231);
-    border-color: rgb(231, 231, 231);
-    color:rgb(2, 197, 171);
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color:var(--color-primary);
 }
 
 .btn.btn-secondary:hover {
-    background-color: rgb(2, 197, 171);
-    color: rgb(231, 231, 231);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .btn.btn-outline-secondary {
-    border-color:rgb(231, 231, 231);
-    color:rgb(231, 231, 231);
+    border-color:var(--color-secondary);
+    color:var(--color-secondary);
 }
 
 .btn.btn-outline-secondary:hover {
-    background-color: rgb(231, 231, 231);
-    border-color: rgb(231, 231, 231);
-    color:rgb(25, 249, 219);
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color:var(--color-primary);
 }
 
 /* NAVBAR */
 
 .navbar #navbarNav a {
-    color:rgb(2, 197, 171);
+    color:var(--color-primary);
 }
 
 .navbar #navbarNav a:hover {
-    color:rgb(25, 249, 219);
+    color: rgb(25, 249, 219);
 }
 
 .navbar .navbar-toggler:focus {
     box-shadow: none;
-    border: 1px solid rgb(2, 197, 171);
+    border: 1px solid var(--color-primary);
 }
 
 .navbar .navbar-brand img {
@@ -90,7 +95,7 @@ body {
 }
 
 .bi-person-circle {
-    color:rgb(231, 231, 231);
+    color:var(--color-secondary);
     font-size: 30px;
 }
 
@@ -101,11 +106,11 @@ body {
 }
 
 .bi-person-circle:hover {
-    color:rgb(2, 197, 171);
+    color:var(--color-primary);
 }
 
 .offcanvas-header {
-    border-bottom: 2px solid rgb(2, 197, 171);
+    border-bottom: 2px solid var(--color-primary);
 }
 
 .offcanvas-header .btn-close {
@@ -118,15 +123,12 @@ body {
 }
 
 .offcanvas form {
-    background-color: rgb(46, 46, 46);
-    /* margin-top: 30px; */
     padding: 25px;
-    /* border-radius: 20px; */
 }
 
 .offcanvas form .form-label,
 .offcanvas form p {
-    color: rgb(2, 197, 171);
+    color: var(--color-primary);
 }
 
 .offcanvas form .form-control,
@@ -142,11 +144,11 @@ body {
 .offcanvas form .form-control:focus,
 .offcanvas form .form-select:focus {
     box-shadow: none;
-    border-bottom: 1px solid rgb(2, 197, 171);
+    border-bottom: 1px solid var(--color-primary);
 }
 
 .offcanvas form .form-select option {
-    background-color: rgb(42, 42, 42);
+    background-color: var(--color-primary);
 }
 
 /* CASE */
@@ -180,7 +182,7 @@ body {
 }
 
 #projects-link {
-    color:rgb(2, 197, 171);
+    color:var(--color-primary);
     transition: 300ms;
     font-size: 18px;
 }
@@ -208,14 +210,14 @@ body {
 }
 
 .services .card-header {
-    background-color: rgb(2, 197, 171);
+    background-color: var(--color-primary);
     color: white;
     margin: 1px;
     border-radius: 0;
 }
 
 .reversed-card {
-    background-color: rgb(2, 197, 171);
+    background-color: var(--color-primary);
     color: white;
 }
 
@@ -237,7 +239,7 @@ body {
 #contact form .form-control {
     background-color: inherit;
     border: none;
-    border-bottom: 1px solid rgb(2, 197, 171);
+    border-bottom: 1px solid var(--color-primary);
     border-radius: 0;
 }
 
@@ -248,11 +250,11 @@ body {
 #contact form .form-floating textarea {
     background-color: white;
     height: 150px;
-    border: 1px solid rgb(2, 197, 171)
+    border: 1px solid var(--color-primary);
 }
 
 #contact .h5 {
-    color: rgb(2, 197, 171);
+    color: var(--color-primary);
 }
 
 .map iframe {
@@ -263,7 +265,7 @@ body {
 /* FOOTER */
 
 footer h3 {
-    color: rgb(2, 197, 171);
+    color: var(--color-primary);
 }
 
 /* DESKTOP MEDIA QUERY */
