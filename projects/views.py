@@ -29,19 +29,19 @@ def projects_view(request):
     )
 
 def projects_add(request):
-    form = ProjectForm()
+    form = ProjectForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+    )
 
-    if request.method == 'POST':
-        form = ProjectForm(request.POST or None)
+    if form.is_valid():
+        form.save()
 
-        if form.is_valid():
-            pass
-
-            return redirect(reverse('projects:home'))
+        return redirect(reverse('projects:home'))
 
     return render(
         request,
-        'global/partials/_header.html',
+        'projects/pages/home.html',
         context={
             'form': form
         }

@@ -43,9 +43,12 @@
                 <div class="container col-12">
 
                     <!-- NEW PROJECT FORM -->
-                    <form action="{% url 'projects:projects_add' %}" class="mt-md-4 bg-dark rounded">
+                    <form action="{% url 'projects:projects_add' %}" method="POST" class="mt-md-4 bg-dark rounded" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form }}
+                        <button type="submit" onclick="clearImage()" class="col-11 btn btn-outline-primary">
+                            Adicionar
+                        </button>
                     </form>
 
                 </div>
