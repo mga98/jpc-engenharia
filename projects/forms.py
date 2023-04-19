@@ -29,6 +29,16 @@ class ProjectForm(forms.ModelForm):
 
 
 class PicturesForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['image'].widget.attrs.update(
+            {
+                'class': 'form-control',
+                'type': 'file',
+            }
+        )
+
     class Meta:
         model = Pictures
 

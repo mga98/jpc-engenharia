@@ -48,5 +48,8 @@ class Pictures(models.Model):
         Project, on_delete=models.CASCADE, null=True
     )
     image = models.FileField(
-        upload_to='projects/images/', blank=True, default=''
+        'Fotos do projeto',
+        upload_to='projects/images/',
+        blank=True,
+        default='',
     )

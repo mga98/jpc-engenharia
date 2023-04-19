@@ -14,7 +14,7 @@
                         {% endif %}
                         <div class="project-card-body px-4 pb-3">
                             <h3 class="display-6 text-center py-2">{{ project.title }}</h3>
-                            <a class="text-center h6" href="">Ver mais...</a>
+                            <a class="text-center h6" href="{% url 'projects:project_detail' project.id %}">Ver mais...</a>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         </div>
                         <div class="project-card-body px-4 pb-3">
                             <h3 class="display-6 text-center py-2">{{ project.title }}</h3>
-                            <a class="text-center h5" href="">Ver mais...</a>
+                            <a class="text-center h5" href="{% url 'projects:project_detail' project.id %}">Ver mais...</a>
                         </div>
                     </div>
                 </div>

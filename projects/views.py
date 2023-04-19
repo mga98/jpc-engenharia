@@ -31,7 +31,7 @@ def project_detail(request, pk):
     project = get_object_or_404(Project, id=pk)
     pictures = Pictures.objects.filter(
         project=project,
-    )
+    ).order_by('-id')
 
     return render(
         request,
