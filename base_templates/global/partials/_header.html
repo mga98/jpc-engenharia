@@ -46,6 +46,7 @@
                     <form action="{% url 'projects:projects_add' %}" method="POST" class="mt-md-4 bg-dark rounded" enctype="multipart/form-data">
                         {% csrf_token %}
                             <div class="row justify-content-center">
+                                {% comment %} FORM 1 {% endcomment %}
                                 {% for field in form %}
                                 <div class="col-12 mb-4">                                    
                                     <label class="form-label" for="{{ field.id_for_label }}">
@@ -54,7 +55,19 @@
                                     {{ field }}                        
                                 </div>
                                 {% endfor %}
+
+                                {% comment %} FORM 2 {% endcomment %}
+                                {% for field2 in form2 %}
+                                <div class="col-12 mb-4">
+                                    <label for="{{ field2.id_for_label }}" class="form-label">
+                                        {{ field2.label }}
+                                    </label>
+                                    {{ field2 }}
+                                </div>
+                                {% endfor %}
+
                                 <img id="frame" src="" class="img-fluid"/>
+
                                 <div class="col-12 mb-4">
                                     <p>Status do projeto:</p>
                                     <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
@@ -62,6 +75,7 @@
                                         <option value="1">Em andamento</option>
                                     </select>
                                 </div>
+
                                 <button type="submit" onclick="clearImage()" class="btn btn-outline-primary">
                                     Adicionar
                                 </button>

@@ -8,15 +8,11 @@
                     <div class="col-12 pb-4">
                         <h2 class="display-3 text-center">{{ project.title }}</h2>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
-                    </div>
+                    {% for picture in pictures %}
+                        <div class="col-md-4 mb-4">
+                            <img class="img-fluid" src="{{ picture.image.url }}" alt="">
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-md-6 mb-4">
