@@ -1,10 +1,8 @@
-# flake8: noqa
-
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-from .forms import ProjectForm, PicturesForm
-from .models import Project, Pictures
+from .forms import ProjectForm
+from .models import Project
 
 
 def home(request):
@@ -27,6 +25,19 @@ def projects_view(request):
             'ongoing_projects': ongoing_projects,
         }
     )
+
+
+def project_detail(request, pk):
+    project = get_object_or_404(Project, id=pk)
+
+    return render(
+        request,
+        'projects/pages/project_detail.html',
+        context={
+            'project': project,
+        }
+    )
+
 
 def projects_add(request):
     form = ProjectForm(

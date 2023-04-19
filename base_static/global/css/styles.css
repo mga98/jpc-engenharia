@@ -94,9 +94,9 @@ body {
     border-left: 1px solid rgba(255, 255, 255, 0.334);
 }
 
-.bi-person-circle {
+.bi-upload {
     color:var(--color-secondary);
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .frame-img {
@@ -105,7 +105,7 @@ body {
     margin: 10px 0;
 }
 
-.bi-person-circle:hover {
+.bi-upload:hover {
     color:var(--color-primary);
 }
 
