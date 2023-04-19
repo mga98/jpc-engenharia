@@ -45,10 +45,27 @@
                     <!-- NEW PROJECT FORM -->
                     <form action="{% url 'projects:projects_add' %}" method="POST" class="mt-md-4 bg-dark rounded" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form }}
-                        <button type="submit" onclick="clearImage()" class="col-11 btn btn-outline-primary">
-                            Adicionar
-                        </button>
+                            <div class="row justify-content-center">
+                                {% for field in form %}
+                                <div class="col-12 mb-4">                                    
+                                    <label class="form-label" for="{{ field.id_for_label }}">
+                                        {{ field.label }}
+                                    </label>
+                                    {{ field }}                        
+                                </div>
+                                {% endfor %}
+                                <img id="frame" src="" class="img-fluid"/>
+                                <div class="col-12 mb-4">
+                                    <p>Status do projeto:</p>
+                                    <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
+                                        <option selected>Pronto</option>
+                                        <option value="1">Em andamento</option>
+                                    </select>
+                                </div>
+                                <button type="submit" onclick="clearImage()" class="btn btn-outline-primary">
+                                    Adicionar
+                                </button>
+                            </div>          
                     </form>
 
                 </div>

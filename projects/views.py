@@ -34,8 +34,20 @@ def projects_add(request):
         files=request.FILES or None,
     )
 
+    status = request.POST.get('status-select')
+    print(status)
+
     if form.is_valid():
-        form.save()
+        project = form.save(commit=False)
+        project.author = request.user
+
+        if status == 'Pronto':
+            project.status = True
+        
+        else:
+            project.status = False
+        
+        project.save()
 
         return redirect(reverse('projects:home'))
 
