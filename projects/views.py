@@ -49,7 +49,7 @@ def projects_add(request):
         
         project.save()
 
-        return redirect(reverse('projects:home'))
+        return redirect(reverse('projects:projects_all'))
 
     return render(
         request,

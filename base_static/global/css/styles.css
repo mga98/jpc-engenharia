@@ -270,6 +270,7 @@ body {
     transition: all 300ms ease-in-out;
     border-radius: 10px;
     overflow: hidden;
+    max-height: 300px;
 }
 
 .project-card:hover {
