@@ -1,6 +1,7 @@
 :root {
     --color-primary: rgb(2, 197, 171);
     --color-secondary: rgb(231, 231, 231);
+    --color-dark: rgb(52, 58, 64);
 }
 
 a {
@@ -147,7 +148,7 @@ body {
 }
 
 .offcanvas form .form-select option {
-    background-color: var(--color-primary);
+    background-color: var(--color-dark);
 }
 
 /* CASE */
