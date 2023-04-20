@@ -298,6 +298,19 @@ body {
     justify-content: center;
 }
 
+/* DETAIL PAGE */
+
+.project-imgs img {
+    transition: all 300ms ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.project-imgs img:hover {
+    transform: scale(1.02);
+    opacity: 0.8;
+}
+
 /* FOOTER */
 
 footer h3 {
