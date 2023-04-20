@@ -109,12 +109,12 @@ body {
     color:var(--color-primary);
 }
 
-.offcanvas-header {
-    border-bottom: 2px solid var(--color-primary);
-}
-
 .offcanvas-header .btn-close {
     color: white;
+}
+
+.offcanvas-header .btn-close:focus {
+    box-shadow: none;
 }
 
 .offcanvas-body {
@@ -123,12 +123,17 @@ body {
 }
 
 .offcanvas form {
-    padding: 25px;
+    padding: 10px 25px 25px;
+}
+
+.offcanvas form h3 {
+    border-bottom: 1px solid var(--color-primary)
 }
 
 .offcanvas form .form-label,
 .offcanvas form p {
     color: var(--color-primary);
+    font-size: 18px;
 }
 
 .offcanvas form .form-control,
@@ -309,6 +314,17 @@ body {
 .project-imgs img:hover {
     transform: scale(1.02);
     opacity: 0.8;
+}
+
+.thumb-img {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.449);
+}
+
+.thumb-img img {
+    padding: 12px 1px;
 }
 
 /* FOOTER */

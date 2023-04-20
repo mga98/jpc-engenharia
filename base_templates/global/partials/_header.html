@@ -35,7 +35,6 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                 aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                <h4 id="offcanvasRightLabel">Adicionar Projeto</h4>
                 <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
                 </div>
@@ -45,41 +44,42 @@
                     <!-- NEW PROJECT FORM -->
                     <form action="{% url 'projects:projects_add' %}" method="POST" class="mt-md-4 bg-dark rounded" enctype="multipart/form-data">
                         {% csrf_token %}
-                            <div class="row justify-content-center">
-                                {% comment %} FORM 1 {% endcomment %}
-                                {% for field in form %}
-                                <div class="col-12 mb-4">                                    
-                                    <label class="form-label" for="{{ field.id_for_label }}">
-                                        {{ field.label }}
-                                    </label>
-                                    {{ field }}                        
-                                </div>
-                                {% endfor %}
+                        <h3 class="display-5 text-center pb-2">Novo projeto</h3>
+                        <div class="row justify-content-center pt-2">
+                            {% comment %} FORM 1 {% endcomment %}
+                            {% for field in form %}
+                            <div class="col-12 mb-4">                                    
+                                <label class="form-label" for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                </label>
+                                {{ field }}                        
+                            </div>
+                            {% endfor %}
 
-                                {% comment %} FORM 2 {% endcomment %}
-                                {% for field2 in form2 %}
-                                <div class="col-12 mb-4">
-                                    <label for="{{ field2.id_for_label }}" class="form-label">
-                                        {{ field2.label }}
-                                    </label>
-                                    {{ field2 }}
-                                </div>
-                                {% endfor %}
+                            {% comment %} FORM 2 {% endcomment %}
+                            {% for field2 in form2 %}
+                            <div class="col-12 mb-4">
+                                <label for="{{ field2.id_for_label }}" class="form-label">
+                                    {{ field2.label }}
+                                </label>
+                                {{ field2 }}
+                            </div>
+                            {% endfor %}
 
-                                <img id="frame" src="" class="img-fluid"/>
+                            <img id="frame" src="" class="img-fluid"/>
 
-                                <div class="col-12 mb-4">
-                                    <p>Status do projeto:</p>
-                                    <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
-                                        <option selected>Pronto</option>
-                                        <option value="1">Em andamento</option>
-                                    </select>
-                                </div>
+                            <div class="col-12 mb-4">
+                                <p class="mb-0">Status do projeto:</p>
+                                <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
+                                    <option selected>Pronto</option>
+                                    <option value="1">Em andamento</option>
+                                </select>
+                            </div>
 
-                                <button type="submit" onclick="clearImage()" class="btn btn-outline-primary">
-                                    Adicionar
-                                </button>
-                            </div>          
+                            <button type="submit" onclick="clearImage()" class="btn btn-outline-primary">
+                                Adicionar
+                            </button>
+                        </div>          
                     </form>
 
                 </div>
