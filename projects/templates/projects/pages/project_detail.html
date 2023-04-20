@@ -1,22 +1,29 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-    <div class="container case py-3 py-md-1">
-        <h1 class="display-3">{{ project.title }}</h1>
-        <div class="row justify-content-center py-3">
-            <div class="thumb-img col-md-6">
-                <img src="{{ project.thumbnail.url }}" alt="thumb-img" class="img-fluid" id="main">
-            </div>
-            <div class="col-12 py-4">
+    <div class="container case py-3 py-md-4">
+        
+        <div class="row justify-content-center align-items-start py-md-3">
+            <div class="col-md-5">
+                <h1 class="display-3 text-center">{{ project.title }}</h1>
+                <hr>
                 <div class="row justify-content-center">
+                    <h3>Fotos:</h3>
                     {% for picture in pictures %}
-                    <div class="col-md-2 col-4 project-imgs">
+                    <div class="col-md-4 pt-md-3 pb-3 col-4 project-imgs">
                         <a href="{{ picture.image.url }}" onclick="swap(this); return false;">
                             <img src="{{ picture.image.url }}" alt="project-img" class="img-fluid">  
                         </a>
                     </div>
+                    {% empty %}
+                    <p>Este projeto ainda não possui fotos</p>
                     {% endfor %}
                 </div>
+            </div>
+            
+            <div class="thumb-img col-md-7">
+                <img src="{{ project.thumbnail.url }}" alt="thumb-img" class="img-fluid" id="main">
+                
             </div>
         </div>
     </div>
