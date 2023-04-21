@@ -161,30 +161,32 @@
           </div>
 
           <!-- CONTACT FORM -->
-          <form action="" class="col-md-6 pt-3 pt-md-0 pb-md-3">
+          <form action="{% url 'projects:home' %}" method="POST" class="col-md-6 pt-3 pt-md-0 pb-md-3">
+            {% csrf_token %}
             <div class="row">
               <div class="col-md-7">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Nome Completo">
-                  <label for="floatingInput">Nome completo</label>
+                  {{ messages_form.name }}
+                  <label for="{{ messages_form.name.id_for_label }}">{{ messages_form.name.label }}</label>
+                  
                 </div>
               </div>
               <div class="col-md-5">
                 <div class="form-floating mb-3">
-                  <input type="tel" class="form-control" id="floatingInput" placeholder="Celular ou telefone">
-                  <label for="floatingInput">Celular ou Telefone</label>
+                  {{ messages_form.phone }}
+                  <label for="{{ messages_form.phone.id_for_label }}">{{ messages_form.phone.label }}</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">E-mail para contato</label>
+                  {{ messages_form.email }}
+                  <label for="{{ messages_form.email.id_for_label }}">{{ messages_form.email.label }}</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <textarea class="form-control" placeholder="Deixe sua mensagem" id="floatingTextarea"></textarea>
-                  <label for="floatingTextarea">Digite sua mensagem aqui</label>
+                  {{ messages_form.message }}
+                  <label for="{{ messages_form.message.id_for_label }}">{{ messages_form.message.label }}</label>
                 </div>
                 <button type="submit" class="col-12 btn btn-primary mt-3">Enviar</button>
               </div>

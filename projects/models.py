@@ -53,3 +53,12 @@ class Pictures(models.Model):
         blank=True,
         default='',
     )
+
+
+class Messages(models.Model):
+    name = models.CharField('Nome completo', max_length=100)
+    phone = models.CharField('Celular ou Telefone', max_length=20)
+    email = models.EmailField('E-mail para contato', max_length=100)
+    message = models.TextField('Sua mensagem')
+    sended_at = models.DateTimeField('Enviada em', auto_now_add=True)
+    read = models.BooleanField('Lida', default=False)

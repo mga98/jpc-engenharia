@@ -1,12 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-from .forms import ProjectForm, PicturesForm
+from .forms import ProjectForm, PicturesForm, MessagesForm
 from .models import Project, Pictures
 
 
 def home(request):
-    return render(request, 'projects/pages/home.html')
+    messages_form = MessagesForm(data=request.POST or None)
+
+    if messages_form.is_valid():
+        messages_form.save()
+
+    return render(
+        request,
+        'projects/pages/home.html',
+        context={
+            'messages_form': messages_form,
+        }
+    )
 
 
 def projects_view(request):
