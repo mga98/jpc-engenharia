@@ -164,23 +164,23 @@
           <form action="{% url 'projects:home' %}" method="POST" class="col-md-6 pt-3 pt-md-0 pb-md-3">
             {% csrf_token %}
             <div class="row">
-              <div class="col-md-7">
+              <div class="col-md-6">
                 <div class="form-floating mb-3">
                   {{ messages_form.name }}
                   <label for="{{ messages_form.name.id_for_label }}">{{ messages_form.name.label }}</label>
                   
                 </div>
               </div>
-              <div class="col-md-5">
-                <div class="form-floating mb-3">
-                  {{ messages_form.phone }}
-                  <label for="{{ messages_form.phone.id_for_label }}">{{ messages_form.phone.label }}</label>
-                </div>
-              </div>
-              <div class="col-12">
+              <div class="col-6">
                 <div class="form-floating mb-3">
                   {{ messages_form.email }}
                   <label for="{{ messages_form.email.id_for_label }}">{{ messages_form.email.label }}</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-floating mb-3">
+                  {{ messages_form.subject }}
+                  <label for="{{ messages_form.subject.id_for_label }}">{{ messages_form.subject.label }}</label>
                 </div>
               </div>
               <div class="col-12">
@@ -188,7 +188,7 @@
                   {{ messages_form.message }}
                   <label for="{{ messages_form.message.id_for_label }}">{{ messages_form.message.label }}</label>
                 </div>
-                <button type="submit" class="col-12 btn btn-primary mt-3">Enviar</button>
+                <button type="submit" class="col-12 btn btn-primary mt-3">Enviar mensagem</button>
               </div>
             </div>
           </form>

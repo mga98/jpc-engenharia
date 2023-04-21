@@ -59,10 +59,10 @@ class MessagesForm(forms.ModelForm):
             }
         )
 
-        self.fields['phone'].widget.attrs.update(
+        self.fields['subject'].widget.attrs.update(
             {
                 'class': 'form-control',
-                'placeholder': 'Celular ou Telefone',
+                'placeholder': 'Assunto',
             }
         )
 
@@ -83,4 +83,4 @@ class MessagesForm(forms.ModelForm):
     class Meta:
         model = Messages
 
-        fields = ('name', 'phone', 'email', 'message')
+        fields = ('name', 'subject', 'email', 'message')

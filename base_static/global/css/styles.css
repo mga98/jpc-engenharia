@@ -99,13 +99,18 @@ body {
 .bi-person-circle,
 .bi-bell {
     color:var(--color-secondary);
-    font-size: 25px;
+    font-size: 27px;
 }
 
 .bi-file-earmark-plus:hover,
 .bi-person-circle:hover,
 .bi-bell:hover {
     color:var(--color-primary);
+}
+
+#navbarNav .dropdown .dropdown-item {
+    font-size: 16px;
+    color: var(--color-secondary);
 }
 
 /* PROJECTS ADD */

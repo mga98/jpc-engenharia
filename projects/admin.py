@@ -24,7 +24,7 @@ class PicturesAdmin(admin.ModelAdmin):
 
 @admin.register(Messages)
 class MessagesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'sended_at', 'read')
+    list_display = ('id', 'name', 'subject', 'email', 'sended_at', 'read')
     list_display_links = ('id', 'name')
     search_fields = ('id', 'name', 'email')
     list_filter = ('name', 'email', 'read')
