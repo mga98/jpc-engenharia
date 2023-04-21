@@ -2,7 +2,9 @@
     --color-primary: rgb(2, 197, 171);
     --color-secondary: rgb(231, 231, 231);
     --color-dark: rgb(52, 58, 64);
-    --color-gray: rgb(100, 100, 100);
+    --color-gray-0: rgb(150, 150, 150);
+    --color-gray-1: rgb(100, 100, 100);
+    --color-gray-2: rgb(70, 70, 70);
 }
 
 a {
@@ -71,6 +73,7 @@ body {
 
 .navbar #navbarNav a {
     color:var(--color-primary);
+    font-size: 19px;
 }
 
 .navbar #navbarNav a:hover {
@@ -83,8 +86,8 @@ body {
 }
 
 .navbar .navbar-brand img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 .bi-person-circle {
@@ -169,11 +172,17 @@ body {
 /* CASE */
 
 .case {
-    margin-top: 82px;
+    margin-top: 92px;
+}
+
+.case p {
+    font-size: 20px;
+    color: var(--color-gray-2)
 }
 
 .case h1 {
     border-bottom: 1px solid var(--color-gray);
+    color: var(--color-secondary);
 }
 
 /* PROJECTS */
@@ -352,24 +361,16 @@ footer h3 {
 @media(min-width: 768px) {
     /* PRESENTATION MEDIA */
     .presentation {
-        position: relative;
         padding: 10px;
-        height: 300px;
+        height: 450px;
         display: flex;
         align-items: center;
-    }
-    
-    .presentation img {
-        width: 550px;
-        position: absolute;
-        top: 0;
-        right: 125px;
     }
 
     /* PROJECTS MEDIA */
 
     .projects {
-        padding: 150px 0 25px;
+        padding: 50px 0 20px;
     }
 
     .projects .carousel-caption {
