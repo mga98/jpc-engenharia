@@ -11,6 +11,8 @@ def home(request):
     if messages_form.is_valid():
         messages_form.save()
 
+        return redirect(reverse('projects:home'))
+
     return render(
         request,
         'projects/pages/home.html',

@@ -30,3 +30,4 @@ class MessagesAdmin(admin.ModelAdmin):
     list_filter = ('name', 'email', 'read')
     list_per_page = 10
     ordering = ('-id', '-sended_at')
+    list_editable = ('read',)
