@@ -87,14 +87,21 @@ body {
     height: 40px;
 }
 
-.bi-upload,
 .bi-person-circle {
+    border-left: 1px solid var(--color-secondary);
+    padding-left: 15px;
+}
+
+.bi-file-earmark-plus,
+.bi-person-circle,
+.bi-bell {
     color:var(--color-secondary);
     font-size: 25px;
 }
 
-.bi-upload:hover,
-.bi-person-circle:hover {
+.bi-file-earmark-plus:hover,
+.bi-person-circle:hover,
+.bi-bell:hover {
     color:var(--color-primary);
 }
 

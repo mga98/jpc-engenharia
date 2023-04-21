@@ -55,7 +55,6 @@ def projects_add(request):
 
     status = request.POST.get('status-select')
     images = request.FILES.getlist('image')
-    print(images)
 
     if form.is_valid() and form2.is_valid():
         project = form.save(commit=False)
