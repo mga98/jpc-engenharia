@@ -2,6 +2,7 @@
     --color-primary: rgb(2, 197, 171);
     --color-secondary: rgb(231, 231, 231);
     --color-dark: rgb(52, 58, 64);
+    --color-gray: rgb(100, 100, 100);
 }
 
 a {
@@ -86,27 +87,29 @@ body {
     height: 40px;
 }
 
+.bi-upload,
+.bi-person-circle {
+    color:var(--color-secondary);
+    font-size: 25px;
+}
+
+.bi-upload:hover,
+.bi-person-circle:hover {
+    color:var(--color-primary);
+}
+
 /* PROJECTS ADD */
 
 .offcanvas {
-    background: linear-gradient(0deg, rgba(175, 175, 175, 0.337) 5%, rgba(177, 177, 177, 0.151) 76%, rgba(236, 236, 236, 0.041) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.500) 5%, rgba(0, 0, 0, 0.400) 76%, rgba(0, 0, 0, 0.200) 100%);
     color: white;
     border-left: 1px solid rgba(255, 255, 255, 0.334);
-}
-
-.bi-upload {
-    color:var(--color-secondary);
-    font-size: 25px;
 }
 
 .frame-img {
     padding: 10px;
     border: 1px solid white;
     margin: 10px 0;
-}
-
-.bi-upload:hover {
-    color:var(--color-primary);
 }
 
 .offcanvas-header .btn-close {
@@ -160,6 +163,10 @@ body {
 
 .case {
     margin-top: 82px;
+}
+
+.case h1 {
+    border-bottom: 1px solid var(--color-gray);
 }
 
 /* PROJECTS */
