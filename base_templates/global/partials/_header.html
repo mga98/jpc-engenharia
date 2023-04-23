@@ -32,13 +32,15 @@
             <ul class="user-nav navbar-nav align-items-center">
                 <li class="nav-item">
                     <div class="dropdown notification-dropdown">
-                        <button class="btn notification-btn dropdown-toggle ps-0 pe-0" id="dropdownMenuClickableInside"
-                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false">
+                        <button class="btn notification-btn dropdown-toggle ps-0 pe-0" id="defaultDropdown"
+                            data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
                             <i class="bi bi-bell"></i>
-                            <span class="position-absolute top-0 end-10 translate-middle badge rounded-circle">{{ messages_count }}</span>
+                            {% if contact_messages %}
+                                <span class="position-absolute top-0 end-10 translate-middle badge rounded-circle">{{ messages_count }}</span>
+                            {% endif %}
                         </button>
                         
-                        <div class="dropdown-menu dropdown-menu-md-end" aria-labelledby="dropdownMenuClickableInside">
+                        <div class="dropdown-menu dropdown-menu-md-end" aria-labelledby="defaultDropdown">
                             <p class="h5 text-center">Suas mensagens</p>
                             <hr>
                             {% for message in contact_messages %}
@@ -75,14 +77,22 @@
                                         </div>
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">
-                                            Marcar como lida
-                                            <i class="bi bi-check-lg"></i>
-                                        </button>
+                                        <form action="{% url 'projects:read_message' %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="message_id" value="{{ message.id }}">
+                                            <button type="submit" class="btn btn-primary">
+                                                Marcar como lida
+                                                <i class="bi bi-check-lg"></i>
+                                            </button>
+                                        </form>
                                         </div>
                                     </div>
                                     </div>
                                 </div>
+                                {% empty %}
+                                <div class="container">
+                                    <p class="text-center">Nenhuma mensagem.</p>
+                                </div>  
                             {% endfor %}
                         </div>
                     </div>
@@ -90,7 +100,7 @@
                 <li class="nav-item">
 
                     <!-- OFFCANVAS -->
-                    <button class="btn ps-0 pe-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    <button class="btn ps-0 pe-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                         aria-controls="offcanvasRight">
                         <i class="bi bi-file-earmark-plus"></i>
                     </button>

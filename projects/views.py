@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.http import Http404
 
 from .forms import ProjectForm, PicturesForm, MessagesForm
-from .models import Project, Pictures
+from .models import Project, Pictures, Messages
 
 
 def home(request):
@@ -97,3 +98,22 @@ def projects_add(request):
             'form': form
         }
     )
+
+
+def read_message(request):
+    if not request.POST:
+        raise Http404
+
+    POST = request.POST
+    id = POST.get('message_id')
+    print(id)
+
+    message = get_object_or_404(
+        Messages,
+        id=id,
+    )
+    print(message.read)
+    message.read = True
+    message.save()
+
+    return redirect(reverse('projects:home'))
