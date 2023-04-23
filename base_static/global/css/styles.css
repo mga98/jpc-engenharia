@@ -108,9 +108,44 @@ body {
     color:var(--color-primary);
 }
 
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
 #navbarNav .dropdown .dropdown-item {
     font-size: 16px;
     color: var(--color-secondary);
+}
+
+.notification-btn {
+    position: relative;
+}
+
+.notification-btn .notification-count {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0px;
+    background-color: var(--color-primary);
+    
+    border-radius: 50%;
+}
+
+.notification-btn .notification-count p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--color-secondary)
+}
+
+.user-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 /* PROJECTS ADD */
