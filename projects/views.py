@@ -106,13 +106,11 @@ def read_message(request):
 
     POST = request.POST
     id = POST.get('message_id')
-    print(id)
 
     message = get_object_or_404(
         Messages,
         id=id,
     )
-    print(message.read)
     message.read = True
     message.save()
 

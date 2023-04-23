@@ -1,5 +1,6 @@
 :root {
     --color-primary: rgb(2, 197, 171);
+    --color-primary-hover: rgb(3, 148, 129);
     --color-secondary: rgb(231, 231, 231);
     --color-dark: rgb(52, 58, 64);
     --color-gray-0: rgb(150, 150, 150);
@@ -117,9 +118,9 @@ body {
     color: var(--color-secondary);
 }
 
-.notification-btn {
+/* .notification-btn {
     position: relative;
-}
+} */
 
 .notification-btn .badge {
     color: var(--color-secondary);
@@ -127,15 +128,14 @@ body {
 }
 
 .notification-dropdown .dropdown-menu {
-    width: 220px;
+    background-color: var(--color-secondary);
+    width: 280px;
 }
 
 .notification-dropdown .dropdown-menu .modal-btn {
     width: 100%;
     text-align: left;
     border-radius: 0;
-    background-color: var(--color-secondary);
-    border-bottom: 1px solid white;
 }
 
 .notification-dropdown .dropdown-menu .modal-btn:hover {

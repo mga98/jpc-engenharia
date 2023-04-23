@@ -39,16 +39,18 @@
                                 <span class="position-absolute top-0 end-10 translate-middle badge rounded-circle">{{ messages_count }}</span>
                             {% endif %}
                         </button>
-                        
+
                         <div class="dropdown-menu dropdown-menu-md-end" aria-labelledby="defaultDropdown">
-                            <p class="h5 text-center">Suas mensagens</p>
+                            <p class="h4 text-center">Mensagens</p>
                             <hr>
                             {% for message in contact_messages %}
                                 <div class="row">
                                     <div class="col-12">
                                         <button type="button" class="btn modal-btn py-2" data-bs-toggle="modal" data-bs-target="#message-modal-{{ message.id }}">
-                                            {{ message.subject }}
+                                            <p class="fs-5 pb-0 mb-0">{{ message.subject }}</p>
+                                            <p class="fs-6 fw-light pb-0 mb-0">De: {{ message.name }}</p>
                                         </button>
+                                        
                                     </div>
                                 </div>
                                 <!-- Modal -->
@@ -71,7 +73,7 @@
                                                     <p>{{ message.message }}</p>
                                                 </div>
                                                 <div class="col-12">
-                                                    <p>Enviada: {{ message.sended_at }}</p>
+                                                    <p class="fw-light">Enviada: {{ message.sended_at }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,14 +123,17 @@
                                     <div class="row justify-content-center pt-2">
                                         {% comment %} FORM 1 {% endcomment %}
                                         {% for field in form %}
-                                        <div class="col-12 mb-4">                                    
+
+                                        <div class="col-12 mb-4">
                                             <label class="form-label" for="{{ field.id_for_label }}">
                                                 {{ field.label }}
                                             </label>
                                             {{ field }}                        
                                         </div>
                                         {% endfor %}
-            
+
+                                        <img id="frame" src="" class="img-fluid"/>  
+
                                         {% comment %} FORM 2 {% endcomment %}
                                         {% for field2 in form2 %}
                                         <div class="col-12 mb-4">
@@ -139,7 +144,7 @@
                                         </div>
                                         {% endfor %}
             
-                                        <img id="frame" src="" class="img-fluid"/>
+                                        
             
                                         <div class="col-12 mb-4">
                                             <p class="mb-0">Status do projeto:</p>
