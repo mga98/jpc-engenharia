@@ -127,17 +127,29 @@ body {
 }
 
 .notification-dropdown .dropdown-menu {
-    width: 270px;
+    width: 220px;
+}
+
+.notification-dropdown .dropdown-menu .modal-btn {
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+    background-color: var(--color-secondary);
+    border-bottom: 1px solid white;
+}
+
+.notification-dropdown .dropdown-menu .modal-btn:hover {
+    background-color: var(--color-primary);
+}
+
+.modal-backdrop {
+    z-index: 1020;
 }
 
 .user-nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.accordion-button:focus {
-    box-shadow: none;
 }
 
 /* PROJECTS ADD */

@@ -38,47 +38,52 @@
                             <span class="position-absolute top-0 end-10 translate-middle badge rounded-circle">{{ messages_count }}</span>
                         </button>
                         
-                        <div class="dropdown-menu dropdown-menu-start dropdown-menu-md-end" aria-labelledby="dropdownMenuClickableInside">
-                            <div class="accordion" id="accordionExample">
-                                {% for message in contact_messages %}
-                                    <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#message-{{ message.id }}" aria-expanded="true" aria-controls="collapseOne">
-                                            <p>{{ message.subject }}</p>
+                        <div class="dropdown-menu dropdown-menu-md-end" aria-labelledby="dropdownMenuClickableInside">
+                            <p class="h5 text-center">Suas mensagens</p>
+                            <hr>
+                            {% for message in contact_messages %}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="button" class="btn modal-btn py-2" data-bs-toggle="modal" data-bs-target="#message-modal-{{ message.id }}">
+                                            {{ message.subject }}
                                         </button>
-                                    </h2>
-                                    <div id="message-{{ message.id }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <div class="row align-items-center">
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="message-modal-{{ message.id }}" tabindex="-1" aria-labelledby="message-label-{{ message.id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="message-label-{{ message.id }}">{{ message.subject }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
                                                 <div class="col-auto">
-                                                    <p class="mb-0">Nome: {{ message.name }}</p>
+                                                    <p>De: {{ message.name }}</p>
                                                 </div>
                                                 <div class="col-auto">
-                                                    <p class="mb-0">E-mail: {{ message.email }}</p>
+                                                    <p>E-mail: {{ message.email }}</p>
                                                 </div>
                                                 <div class="col-12">
-                                                    <hr>
                                                     <p>{{ message.message }}</p>
-                                                    <hr>
                                                 </div>
                                                 <div class="col-12">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-8">
-                                                            <p class="mb-0">Enviada: {{ message.sended_at }}</p>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <button class="btn btn-primary px-3">
-                                                                Lida
-                                                                <i class="bi bi-check-lg"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                                    <p>Enviada: {{ message.sended_at }}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            Marcar como lida
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                        </div>
                                     </div>
                                     </div>
-                                {% endfor %}
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </li>
