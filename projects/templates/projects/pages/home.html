@@ -5,18 +5,18 @@
 {% block content %}
   <!-- SITE CASE -->
   <section class="case" id="case">
-      <div class="container-fluid bg-secondary-color presentation">
+      <div class="container-fluid presentation">
         <div class="container">
           <div class="row align-items-center justify-content-between">
             <div class="col-md-6 order-md-0 order-2">
-              <h1 class="display-1 pb-2">JP.C Engenharia</h1>
-              <h2 class="h1 text-dark">Solução em elétrica e hidráulica para sua obra!</h2>
+              <h1 class="display-1 text-dark pb-2">JP.C Engenharia</h1>
+              <h2 class="h1 subtitle">Solução em elétrica e hidráulica para sua obra!</h2>
               <p>Especialistas em projetos elétricos, hidrossanitários, gás e sistemas de combate a incêndio,
                 em obras residenciais e comerciais.</p>
-              <a href="#contact" class="btn btn-outline-dark col-md-4 col-12 px-4 mb-4">Entre em contato</a>
+              <a href="#contact" class="btn btn-outline-primary col-md-4 col-12 px-4 mb-4">Entre em contato</a>
             </div>
             <div class="col-md-5">
-              <img src="{% static 'global/img/logo-white.png' %}" alt="" class="img-fluid">
+              <img src="{% static 'global/img/logo.png' %}" alt="" class="img-fluid">
             </div>
           </div>
         </div>
@@ -24,8 +24,8 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="projects" id="projects">
-      <div class="container">
+    <section class="projects p-5" id="projects">
+      <div class="container container p-4 rounded-3">
         <div class="row align-items-center">
           <div class="col-md-7 order-md-1 order-2">
 
@@ -78,7 +78,7 @@
           <div class="col-md-5 order-md-2 order-1 my-3">
             <div class="row justify-content-center">
               <h3 class="display-1 mx-md-5">Projetos</h3>
-              <a href="{% url 'projects:projects_all' %}" class="" id="projects-link">Ver mais...</a>
+              <a href="{% url 'projects:projects_all' %}" class="btn btn-primary col-3">Ver mais...</a>
             </div>
           </div>
         </div>
