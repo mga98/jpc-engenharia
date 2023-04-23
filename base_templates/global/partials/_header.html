@@ -31,17 +31,61 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="user-nav navbar-nav align-items-center">
                 <li class="nav-item">
-                    <button class="btn notification-btn ps-0">
-                        <i class="bi bi-bell"></i>
-                        <div class="notification-count">
-                            <p>{{ messages_count }}</p>
+                    <div class="dropdown notification-dropdown">
+                        <button class="btn notification-btn dropdown-toggle ps-0 pe-0" id="dropdownMenuClickableInside"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 end-10 translate-middle badge rounded-circle">{{ messages_count }}</span>
+                        </button>
+                        
+                        <div class="dropdown-menu dropdown-menu-start dropdown-menu-md-end" aria-labelledby="dropdownMenuClickableInside">
+                            <div class="accordion" id="accordionExample">
+                                {% for message in contact_messages %}
+                                    <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#message-{{ message.id }}" aria-expanded="true" aria-controls="collapseOne">
+                                            <p>{{ message.subject }}</p>
+                                        </button>
+                                    </h2>
+                                    <div id="message-{{ message.id }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <p class="mb-0">Nome: {{ message.name }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p class="mb-0">E-mail: {{ message.email }}</p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <hr>
+                                                    <p>{{ message.message }}</p>
+                                                    <hr>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-8">
+                                                            <p class="mb-0">Enviada: {{ message.sended_at }}</p>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <button class="btn btn-primary px-3">
+                                                                Lida
+                                                                <i class="bi bi-check-lg"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                {% endfor %}
                         </div>
-                    </button>
+                    </div>
                 </li>
                 <li class="nav-item">
 
                     <!-- OFFCANVAS -->
-                    <button class="btn ps-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    <button class="btn ps-0 pe-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                         aria-controls="offcanvasRight">
                         <i class="bi bi-file-earmark-plus"></i>
                     </button>
@@ -101,7 +145,8 @@
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
-                        <button class="btn text-white dropdown-toggle ps-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn text-white dropdown-toggle ps-0" type="button" id="dropdownMenuButton1" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">

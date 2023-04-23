@@ -9,8 +9,6 @@ def projects_add(request):
 def messages_notification(request):
     messages = Messages.objects.filter(
         read=False,
-    )
+    ).order_by('-id')
 
-    messages_count = messages.count()
-
-    return {'messages_count': messages_count}
+    return {'messages_count': messages.count(), 'contact_messages': messages}

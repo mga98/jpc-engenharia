@@ -1,7 +1,7 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-    <div class="container projects py-2 py-md-5 case">
+    <div class="container projects py-2 py-md-3 case">
         <h2 class="display-3 pb-3">Projetos concluidos</h2>
         <div class="row pt-3">
             {% for project in completed_projects %}
@@ -13,8 +13,8 @@
                             </div>
                         {% endif %}
                         <div class="project-card-body px-4 pb-3">
-                            <h3 class="display-6 text-center py-2">{{ project.title }}</h3>
-                            <a class="text-center h6" href="{% url 'projects:project_detail' project.id %}">Ver mais...</a>
+                            <h3 class="display-6 text-center">{{ project.title }}</h3>
+                            <a class="text-center h5" href="{% url 'projects:project_detail' project.id %}">Ver mais...</a>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                             <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
                         </div>
                         <div class="project-card-body px-4 pb-3">
-                            <h3 class="display-6 text-center py-2">{{ project.title }}</h3>
+                            <h3 class="display-6 text-center">{{ project.title }}</h3>
                             <a class="text-center h5" href="{% url 'projects:project_detail' project.id %}">Ver mais...</a>
                         </div>
                     </div>

@@ -121,31 +121,23 @@ body {
     position: relative;
 }
 
-.notification-btn .notification-count {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    top: 0;
-    right: 0px;
+.notification-btn .badge {
+    color: var(--color-secondary);
     background-color: var(--color-primary);
-    
-    border-radius: 50%;
 }
 
-.notification-btn .notification-count p {
-    margin: 0;
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--color-secondary)
+.notification-dropdown .dropdown-menu {
+    width: 270px;
 }
 
 .user-nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
 }
 
 /* PROJECTS ADD */
