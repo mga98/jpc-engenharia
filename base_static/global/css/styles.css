@@ -1,6 +1,7 @@
 :root {
-    --color-primary: rgb(2, 197, 171);
-    --color-primary-hover: rgb(3, 148, 129);
+    --color-primary: rgb(3, 148, 129);
+    --color-primary-hover: rgb(2, 197, 171) ;
+    --color-primary-transparent: rgba(3, 148, 129, 0.71);
     --color-secondary: rgb(231, 231, 231);
     --color-dark: rgb(52, 58, 64);
     --color-gray-0: rgb(150, 150, 150);
@@ -77,12 +78,12 @@ body {
 }
 
 .navbar #navbarNav a {
-    color:var(--color-primary);
-    font-size: 19px;
+    color:var(--color-secondary);
+    font-size: 18px;
 }
 
 .navbar #navbarNav a:hover {
-    color: rgb(25, 249, 219);
+    color: var(--color-primary-hover);
 }
 
 .navbar .navbar-toggler:focus {
@@ -95,22 +96,32 @@ body {
     height: 50px;
 }
 
+.bi-envelope,
 .bi-person-circle {
-    border-left: 1px solid var(--color-secondary);
-    padding-left: 15px;
+    font-size: 29px;
 }
 
-.bi-file-earmark-plus,
-.bi-person-circle,
-.bi-bell {
-    color:var(--color-secondary);
+.bi-building-add {
     font-size: 27px;
 }
 
-.bi-file-earmark-plus:hover,
+.bi-building-add,
+.bi-person-circle,
+.bi-envelope {
+    color:var(--color-secondary);
+}
+
+.bi-building-add:hover,
 .bi-person-circle:hover,
-.bi-bell:hover {
-    color:var(--color-primary);
+.bi-envelope:hover {
+    color:var(--color-primary-hover);
+}
+
+
+
+.bi-person-circle {
+    border-left: 1px solid var(--color-secondary);
+    padding-left: 17px;
 }
 
 .navbar-nav .dropdown-menu {
@@ -139,7 +150,8 @@ body {
 }
 
 .notification-dropdown .dropdown-menu .modal-btn:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-transparent);
+    transform: scale(1.07);
 }
 
 .modal-backdrop {
@@ -235,7 +247,7 @@ body {
 /* PROJECTS */
 
 #projects {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-primary);
 }
 
 #projects .container {

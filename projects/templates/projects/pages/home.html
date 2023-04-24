@@ -24,8 +24,8 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="projects p-5" id="projects">
-      <div class="container container p-4 rounded-3">
+    <section class="projects p-2 p-md-5" id="projects">
+      <div class="container container p-md-4 rounded-3">
         <div class="row align-items-center">
           <div class="col-md-7 order-md-1 order-2">
 
@@ -78,7 +78,7 @@
           <div class="col-md-5 order-md-2 order-1 my-3">
             <div class="row justify-content-center">
               <h3 class="display-1 mx-md-5">Projetos</h3>
-              <a href="{% url 'projects:projects_all' %}" class="btn btn-primary col-3">Ver mais...</a>
+              <a href="{% url 'projects:projects_all' %}" class="btn btn-primary col-11 col-md-3">Ver mais...</a>
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@
                   
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
                 <div class="form-floating mb-3">
                   {{ messages_form.email }}
                   <label for="{{ messages_form.email.id_for_label }}">{{ messages_form.email.label }}</label>

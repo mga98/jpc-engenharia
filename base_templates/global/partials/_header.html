@@ -32,9 +32,9 @@
             <ul class="user-nav navbar-nav align-items-center">
                 <li class="nav-item">
                     <div class="dropdown notification-dropdown">
-                        <button class="btn notification-btn dropdown-toggle ps-0 pe-0" id="defaultDropdown"
+                        <button class="btn text-white notification-btn dropdown-toggle ps-0 pe-1" id="defaultDropdown"
                             data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
-                            <i class="bi bi-bell"></i>
+                            <i class="bi bi-envelope"></i>
                             {% if contact_messages %}
                                 <span class="position-absolute top-0 end-10 translate-middle badge rounded-circle">{{ messages_count }}</span>
                             {% endif %}
@@ -102,9 +102,9 @@
                 <li class="nav-item">
 
                     <!-- OFFCANVAS -->
-                    <button class="btn ps-0 pe-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    <button class="btn ps-2 pe-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                         aria-controls="offcanvasRight">
-                        <i class="bi bi-file-earmark-plus"></i>
+                        <i class="bi bi-building-add"></i>
                     </button>
         
                     <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasRight"
@@ -143,9 +143,7 @@
                                             {{ field2 }}
                                         </div>
                                         {% endfor %}
-            
-                                        
-            
+
                                         <div class="col-12 mb-4">
                                             <p class="mb-0">Status do projeto:</p>
                                             <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
