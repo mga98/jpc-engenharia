@@ -78,7 +78,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                         <form action="{% url 'projects:read_message' %}" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="message_id" value="{{ message.id }}">
