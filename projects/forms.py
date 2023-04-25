@@ -2,25 +2,22 @@ from django import forms
 from django.forms import ClearableFileInput
 
 from .models import Project, Pictures, Messages
+from utils.forms_utils import add_attr
 
 
 class ProjectForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['title'].widget.attrs.update(
-            {
-                'class': 'form-control',
-                'placeholder': 'Digite o nome do projeto'
-            }
-        )
-        self.fields['thumbnail'].widget.attrs.update(
-            {
-                'class': 'form-control',
-                'type': 'file',
-                'onchange': 'preview()'
-            }
-        )
+        title_field = self.fields['title']
+        thumbnail_field = self.fields['thumbnail']
+
+        add_attr(title_field, 'class', 'form-control')
+        add_attr(title_field, 'placeholder', 'Digite o nome do projeto')
+
+        add_attr(thumbnail_field, 'class', 'form-control')
+        add_attr(thumbnail_field, 'type', 'file')
+        add_attr(thumbnail_field, 'onchange', 'preview()')
 
     class Meta:
         model = Project
@@ -32,12 +29,10 @@ class PicturesForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['image'].widget.attrs.update(
-            {
-                'class': 'form-control',
-                'type': 'file',
-            }
-        )
+        image_field = self.fields['image']
+
+        add_attr(image_field, 'class', 'form-control')
+        add_attr(image_field, 'type', 'file')
 
     class Meta:
         model = Pictures
@@ -52,33 +47,22 @@ class MessagesForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['name'].widget.attrs.update(
-            {
-                'class': 'form-control',
-                'placeholder': 'Nome completo'
-            }
-        )
+        name_field = self.fields['name']
+        subject_field = self.fields['subject']
+        email_field = self.fields['email']
+        message_field = self.fields['message']
 
-        self.fields['subject'].widget.attrs.update(
-            {
-                'class': 'form-control',
-                'placeholder': 'Assunto',
-            }
-        )
+        add_attr(name_field, 'class', 'form-control')
+        add_attr(name_field, 'placeholder', 'Nome completo')
 
-        self.fields['email'].widget.attrs.update(
-            {
-                'class': 'form-control',
-                'placeholder': 'E-mail para contato',
-            }
-        )
+        add_attr(subject_field, 'class', 'form-control')
+        add_attr(subject_field, 'placeholder', 'Assunto')
 
-        self.fields['message'].widget.attrs.update(
-            {
-                'class': 'form-control',
-                'placeholder': 'Sua mensagem',
-            }
-        )
+        add_attr(email_field, 'class', 'form-control')
+        add_attr(email_field, 'placeholder', 'E-mail para contato')
+
+        add_attr(message_field, 'class', 'form-control')
+        add_attr(message_field, 'placeholder', 'Sua mensagem')
 
     class Meta:
         model = Messages

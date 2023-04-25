@@ -1,0 +1,71 @@
+{% load static %}
+
+<section class="contact pt-md-5" id="contact">
+    <div class="container pb-4">
+      <h3 class="display-1 mb-3 mb-md-5 text-center">Contato</h3>
+      <div class="row px-md-6">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-10 pb-3">
+              <h3 class="display-4 mb-3">Fale Conosco</h3>
+              <p class="h5">Entre em contato com a equipe de engenharia e/ou loja de materiais de
+                instalações.</p>
+            </div>
+            <div class="col-md-5">
+              <p class="mb-1">Telefone/WhatsApp:</p>
+              <a href="https://api.whatsapp.com/send/?phone=5519998526007&text&type=phone_number&app_absent=0" target="_blank">(19) 99852-6007</a>
+            </div>
+            <div class="col-md-5">
+              <p class="mb-1">E-mail:</p>
+              <p>contato@engenhariajpc.com.br</p>
+            </div>
+            <div class="col-12">
+              <p class="mb-1">Endereço:</p>
+              <p>Av. Engenheiro Antônio Francisco de Paula Souza, 4101, Campinas/SP</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <form action="{% url 'projects:home' %}" method="POST" class="col-md-6 pt-3 pt-md-0 pb-md-3">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                {{ messages_form.name }}
+                <label for="{{ messages_form.name.id_for_label }}">{{ messages_form.name.label }}</label>
+                
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                {{ messages_form.email }}
+                <label for="{{ messages_form.email.id_for_label }}">{{ messages_form.email.label }}</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating mb-3">
+                {{ messages_form.subject }}
+                <label for="{{ messages_form.subject.id_for_label }}">{{ messages_form.subject.label }}</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating">
+                {{ messages_form.message }}
+                <label for="{{ messages_form.message.id_for_label }}">{{ messages_form.message.label }}</label>
+              </div>
+              <button type="submit" class="col-12 btn btn-primary mt-3">Enviar mensagem</button>
+            </div>
+          </div>
+        </form>
+      
+        <div class="col-12 map pt-3">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1672.4186616807228!2d-47.02587427567282!3d-22.95011490957792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8ce8400e90d5f%3A0xe67129d63288a583!2sAv.%20Eng.%20Ant%C3%B4nio%20Francisco%20de%20Paula%20Souza%2C%204101%20-%20Jardim%20S%C3%A3o%20Vicente%2C%20Campinas%20-%20SP%2C%2013045-137!5e0!3m2!1spt-BR!2sbr!4v1681654301251!5m2!1spt-BR!2sbr"
+            style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+      </div>
+    </div>
+</section>
