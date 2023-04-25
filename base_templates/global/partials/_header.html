@@ -170,7 +170,7 @@
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
                             <li><p class="h2 dropdown-header">{{ request.user }}</p></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{% url 'users:dashboard' %}">Dashboard</a></li>
                             <li><a class="dropdown-item" href="#">Cadastrar usuário</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Sair</a></li>

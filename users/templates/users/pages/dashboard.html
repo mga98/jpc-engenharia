@@ -2,29 +2,54 @@
 
 {% block content %}
   <div class="container case py-md-5" id="dashboard">
-    <div class="row justify-content-center justify-content-md-between">
-      <div class="col-md-4 dashboard-profile bg-color-primary">
-        <h2 class="text-white text-center display-6">Bem vindo(a), {{ request.user }}!</h2>
-        
+    <div class="row justify-content-center pb-3">
+      <h2 class="display-4 text-center pt-2 pt-md-0">Bem vindo(a), {{ request.user }}!</h2>
+      <div class="col-12 col-md-7 dashboard-profile rounded-3 my-3">
+        <ul class="nav justify-content-md-center align-items-center">
+          <li class="nav-item">
+            <a class="btn btn-outline-primary fs-md-5" href="#">
+              <i class="bi bi-person-add"></i>
+              Cadastrar usuário
+            </a>      
+          </li>
+          <li class="nav-item ps-md-3 ps-4">
+            <a class="btn btn-outline-primary fs-md-5" href="#">
+              <i class="bi bi-envelope fs-6"></i>
+              Mensagens
+            </a>      
+          </li>
+          <li class="nav-item ps-md-3 pt-2 pt-md-0">
+            <a class="btn btn-outline-danger fs-md-5" href="#">
+              <i class="bi bi-box-arrow-left"></i>
+              Sair
+            </a>      
+          </li>
+        </ul>
       </div>
+    </div>
+    <div class="row justify-content-center">
       <div class="col-11 col-md-7">
-        <h2 class="mb-3 display-6">Projetos postados</h2>
+        <h2 class="mb-3 display-6 text-center">Projetos postados</h2>
         {% for project in projects %}
-          <div class="row dashboard-card mb-4 mx-0 shadow bg-dark">
+          <div class="row dashboard-card mb-4 mx-0 shadow-lg bg-white">
             <div class="col-12 col-md-3 px-0 bg-white">
-              <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}-thumb" 
-                class="img-fluid">
+              <a href="{% url 'projects:project_detail' project.id %}">
+                <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}-thumb" 
+                  class="img-fluid">
+              </a>
             </div>
             <div class="col-10 col-md-8 d-flex flex-column justify-content-between py-2">
-              <h3 class="text-color-primary mb-0">{{ project.title }}</h3>
-              <p class="text-white fs-5 mb-4">
+              <a href="{% url 'projects:project_detail' project.id %}">
+                <h3 class="text-color-primary mb-0">{{ project.title }}</h3>
+              </a>
+              <p class="fs-5 mb-4">
                 {% if project.status == True %}
                   Pronto
                 {% else %}
                   Em andamento
                 {% endif %}
               </p>
-              <p class="text-white fw-light mb-0 fs-6">{{ project.created_at }}</p>
+              <p class="fw-light mb-0 fs-6">{{ project.created_at }}</p>
             </div>
             <div class="col-2 d-flex flex-column justify-content-between col-md-1">
               <button class="btn fs-4 text-color-primary"><i class="bi bi-pencil-square"></i></button>

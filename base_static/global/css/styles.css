@@ -114,30 +114,28 @@ body {
     height: 50px;
 }
 
-.bi-envelope,
-.bi-person-circle {
+.user-nav .bi-envelope,
+.user-nav .bi-person-circle {
     font-size: 29px;
 }
 
-.bi-building-add {
+.user-nav .bi-building-add {
     font-size: 27px;
 }
 
-.bi-building-add,
-.bi-person-circle,
-.bi-envelope {
+.user-nav .bi-building-add,
+.user-nav .bi-person-circle,
+.user-nav .bi-envelope {
     color:var(--color-secondary);
 }
 
-.bi-building-add:hover,
-.bi-person-circle:hover,
-.bi-envelope:hover {
+.user-nav .bi-building-add:hover,
+.user-nav .bi-person-circle:hover,
+.user-nav .bi-envelope:hover {
     color:var(--color-primary-hover);
 }
 
-
-
-.bi-person-circle {
+.user-nav .bi-person-circle {
     border-left: 1px solid var(--color-secondary);
     padding-left: 17px;
 }
