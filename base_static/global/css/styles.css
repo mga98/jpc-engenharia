@@ -455,6 +455,21 @@ body {
     color: var(--color-secondary)
 }
 
+/* DASHBOARD */
+
+#dashboard .dashboard-card .bi:hover,
+#dashboard .dashboard-card button:hover {
+    color: var(--color-secondary);
+}
+
+#dashboard .dashboard-card {
+    transition: all 300ms ease-in-out;
+}
+
+#dashboard .dashboard-card:hover {
+    transform: scale(1.01)
+}
+
 /* FOOTER */
 
 footer h3 {

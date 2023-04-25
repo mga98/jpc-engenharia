@@ -1,0 +1,38 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+  <div class="container case py-md-5" id="dashboard">
+    <div class="row justify-content-center justify-content-md-between">
+      <div class="col-md-4 dashboard-profile bg-color-primary">
+        <h2 class="text-white text-center display-6">Bem vindo(a), {{ request.user }}!</h2>
+        
+      </div>
+      <div class="col-11 col-md-7">
+        <h2 class="mb-3 display-6">Projetos postados</h2>
+        {% for project in projects %}
+          <div class="row dashboard-card mb-4 mx-0 shadow bg-dark">
+            <div class="col-12 col-md-3 px-0 bg-white">
+              <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}-thumb" 
+                class="img-fluid">
+            </div>
+            <div class="col-10 col-md-8 d-flex flex-column justify-content-between py-2">
+              <h3 class="text-color-primary mb-0">{{ project.title }}</h3>
+              <p class="text-white fs-5 mb-4">
+                {% if project.status == True %}
+                  Pronto
+                {% else %}
+                  Em andamento
+                {% endif %}
+              </p>
+              <p class="text-white fw-light mb-0 fs-6">{{ project.created_at }}</p>
+            </div>
+            <div class="col-2 d-flex flex-column justify-content-between col-md-1">
+              <button class="btn fs-4 text-color-primary"><i class="bi bi-pencil-square"></i></button>
+              <button class="btn fs-4 text-danger"><i class="bi bi-trash"></i></button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

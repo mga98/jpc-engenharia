@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.http import Http404
 
 from .forms import LoginForm
+from projects.models import Project
 
 
 def login_view(request):
@@ -43,4 +44,12 @@ def login_create(request):
 
 
 def dashboard(request):
-    return render(request, 'users/pages/dashboard.html')
+    projects = Project.objects.all().order_by('-id')
+
+    return render(
+        request,
+        'users/pages/dashboard.html',
+        context={
+            'projects': projects,
+        }
+    )
