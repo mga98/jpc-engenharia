@@ -17,6 +17,24 @@ body {
     background-color: var(--color-secondary);
 }
 
+/* BASICS */
+
+.text-color-primary {
+    color: var(--color-primary);
+}
+
+.text-color-secondary {
+    color: var(--color-secondary);
+}
+
+.bg-color-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-color-secondary {
+    background-color: var(--color-secondary);
+}
+
 .bg-secondary-color {
     background-color: var(--color-primary);
     color: white;
