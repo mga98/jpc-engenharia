@@ -457,7 +457,7 @@ body {
 
 #dashboard .dashboard-card .bi:hover,
 #dashboard .dashboard-card button:hover {
-    color: var(--color-secondary);
+    color: var(--color-primary-hover);
 }
 
 #dashboard .dashboard-card {
@@ -467,6 +467,9 @@ body {
 #dashboard .dashboard-card:hover {
     transform: scale(1.01)
 }
+
+/* SITE MESSAGES */
+
 
 /* FOOTER */
 

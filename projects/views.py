@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.contrib import messages
 from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 
-from .forms import ProjectForm, PicturesForm, MessagesForm
-from .models import Project, Pictures, Messages
+from .forms import MessagesForm, PicturesForm, ProjectForm
+from .models import Messages, Pictures, Project
 
 
 def home(request):
@@ -89,13 +90,21 @@ def projects_add(request):
                 image=i,
             )
 
-        return redirect(reverse('projects:projects_all'))
+        url = reverse("projects:project_detail", kwargs={"pk": project.id})
+        link = f'<a href="{url}">aqui</a>'
+
+        messages.success(
+            request,
+            f'Post criado com sucesso! Clique {link}!'
+        )
+
+        return redirect(reverse('projects:home'))
 
     return render(
         request,
         'projects/pages/home.html',
         context={
-            'form': form
+            'form': form,
         }
     )
 
