@@ -13,6 +13,8 @@ def home(request):
     if messages_form.is_valid():
         messages_form.save()
 
+        messages.success(request, 'Sua mensagem foi enviada com sucesso!')
+
         return redirect(reverse('projects:home'))
 
     return render(

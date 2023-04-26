@@ -7,6 +7,7 @@
     --color-gray-0: rgb(150, 150, 150);
     --color-gray-1: rgb(100, 100, 100);
     --color-gray-2: rgb(70, 70, 70);
+    --color-danger: rgb(251, 46, 46);
 }
 
 a {
@@ -33,6 +34,10 @@ body {
 
 .bg-color-secondary {
     background-color: var(--color-secondary);
+}
+
+.bg-color-danger {
+    background-color: var(--color-danger);
 }
 
 .bg-secondary-color {

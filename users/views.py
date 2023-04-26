@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import Http404
+from django.contrib import messages
 
 from .forms import LoginForm
 from projects.models import Project
@@ -33,13 +34,18 @@ def login_create(request):
 
         if authenticated_user is not None:
             login(request, authenticated_user)
+            messages.success(request, f'Bem vindo, {request.user}!')
 
             return redirect(reverse('projects:home'))
 
         else:
+            messages.error(request, 'Usuário ou senha inválidos!')
+
             return redirect(reverse('users:login_view'))
 
     else:
+        messages.error(request, 'Não foi possível fazer o login!')
+
         return redirect(reverse('users:login_view'))
 
 
