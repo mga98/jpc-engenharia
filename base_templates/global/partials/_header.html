@@ -173,7 +173,13 @@
                             <li><a class="dropdown-item" href="{% url 'users:dashboard' %}">Dashboard</a></li>
                             <li><a class="dropdown-item" href="#">Cadastrar usuário</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Sair</a></li>
+                            <li>
+                                <form action="{% url 'users:logout_view' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="username" value="{{ request.user.username }}">
+                                    <button type="submit" class="btn btn-link dropdown-item" href="#">Sair</button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </li>

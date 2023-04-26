@@ -9,6 +9,7 @@ class LoginForm(forms.Form):
 
         add_attr(self.fields['username'], 'placeholder', 'Nome de usuário')
         add_attr(self.fields['username'], 'class', 'form-control')
+        add_attr(self.fields['username'], 'autofocus', 'autofocus')
 
         add_attr(self.fields['password'], 'placeholder', 'Digite sua senha')
         add_attr(self.fields['password'], 'class', 'form-control')

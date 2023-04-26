@@ -3,7 +3,7 @@
 {% if messages %}
     <div class="toast-container site-messages position-fixed bottom-0 end-0 p-3">
         {% for message in messages %}
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" id="myToastEl">
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="myToastEl">
                 <div class="toast-header bg-color-{{ message.tags }} text-white">
                     <strong class="me-auto">Nova Mensagem</strong>
                     <small class="text-white">agora</small>

@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import Http404
@@ -36,17 +36,32 @@ def login_create(request):
             login(request, authenticated_user)
             messages.success(request, f'Bem vindo, {request.user}!')
 
-            return redirect(reverse('projects:home'))
+            return redirect(reverse('users:dashboard'))
 
         else:
             messages.error(request, 'Usuário ou senha inválidos!')
-
             return redirect(reverse('users:login_view'))
 
     else:
         messages.error(request, 'Não foi possível fazer o login!')
-
         return redirect(reverse('users:login_view'))
+
+
+def logout_view(request):
+    if not request.POST:
+        messages.error(request, 'Não foi possível fazer o logout!')
+
+        return redirect(reverse('users:dashboard'))
+
+    if request.POST.get('username') != request.user.username:
+        messages.error(request, 'Usuário inválido!')
+
+        return redirect(reverse('users:dashboard'))
+
+    logout(request)
+    messages.success(request, 'Você foi deslogado com sucesso!')
+
+    return redirect('users:login_view')
 
 
 def dashboard(request):
