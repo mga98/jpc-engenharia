@@ -125,4 +125,4 @@ def read_message(request):
     message.read = True
     message.save()
 
-    return redirect(reverse('projects:home'))
+    return redirect(reverse('users:dashboard'))

@@ -473,8 +473,11 @@ body {
     transform: scale(1.01)
 }
 
-/* SITE MESSAGES */
-
+#accordion-messages .accordion-header .accordion-button:focus {
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
 
 /* FOOTER */
 

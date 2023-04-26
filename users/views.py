@@ -5,7 +5,7 @@ from django.http import Http404
 from django.contrib import messages
 
 from .forms import LoginForm
-from projects.models import Project
+from projects.models import Project, Messages
 
 
 def login_view(request):
@@ -66,11 +66,13 @@ def logout_view(request):
 
 def dashboard(request):
     projects = Project.objects.all().order_by('-id')
+    messages = Messages.objects.all().order_by('-id')
 
     return render(
         request,
         'users/pages/dashboard.html',
         context={
             'projects': projects,
+            'all_messages': messages,
         }
     )
