@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.http import Http404
 from django.contrib import messages
 
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 from projects.models import Project, Messages
 
 
@@ -68,11 +68,36 @@ def dashboard(request):
     projects = Project.objects.all().order_by('-id')
     messages = Messages.objects.all().order_by('-id')
 
+    register_form_data = request.session.get('register_form_data', None)
+    register_form = RegisterForm(register_form_data)
+
     return render(
         request,
         'users/pages/dashboard.html',
         context={
             'projects': projects,
             'all_messages': messages,
+            'register_form': register_form,
         }
     )
+
+
+def register_create(request):
+    if not request.POST:
+        raise Http404
+
+    POST = request.POST
+    request.session['register_form_data'] = POST
+    register_form = RegisterForm(POST)
+
+    if register_form.is_valid():
+        user = register_form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
+
+        messages.success(request, 'Usuário cadastrado com sucesso!')
+        return redirect(reverse('users:dashboard'))
+
+    messages.error(request, 'Erro ao cadastrar usuário, verifique os dados!')
+
+    return redirect(reverse('users:dashboard'))

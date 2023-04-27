@@ -6,95 +6,15 @@
       <h2 class="display-4 text-center pt-2 pt-md-0">Bem vindo(a), {{ request.user }}!</h2>
       <div class="col-12 col-md-7 dashboard-profile rounded-3 my-3">
         <ul class="nav justify-content-md-center align-items-center">
+
           <li class="nav-item">
-            <a class="btn btn-outline-primary fs-md-5" href="#">
-              <i class="bi bi-person-add"></i>
-              Cadastrar usuário
-            </a>      
+            {% include '../partials/_register.html' %}
           </li>
+
           <li class="nav-item ps-md-3 ps-4">
-            <button class="btn btn-outline-primary fs-md-5" data-bs-toggle="modal" 
-              data-bs-target="#messagesModal">
-              <i class="bi bi-envelope fs-6"></i>
-              Mensagens
-            </button>
-            <div class="modal fade" id="messagesModal" tabindex="-1" 
-              aria-labelledby="messagesModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="messageModalLabel">Todas as mensagens</h5>
-                    <button type="button" 
-                      class="btn-close" 
-                      data-bs-dismiss="modal" 
-                      aria-label="Close">
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    {% for message in all_messages %}
-                      <div class="accordion" id="accordion-messages">
-                        <div class="accordion-item mb-2">
-                          <h2 class="accordion-header" id="heading-{{ message.id }}">
-                            {% if message.read %}
-                              <button class="accordion-button collapsed" type="button" 
-                                data-bs-toggle="collapse" 
-                                data-bs-target="#collapse-{{ message.id }}" 
-                                aria-expanded="true" 
-                                aria-controls="collapse-{{ message.id }}">
-                                {{ message.subject }}
-                              </button>
-                            {% else %}
-                              <button class="accordion-button collapsed bg-color-primary" type="button" 
-                                data-bs-toggle="collapse" data-bs-target="#collapse-{{ message.id }}" 
-                                aria-expanded="true" aria-controls="collapse-{{ message.id }}">
-                              {{ message.subject }}
-                              </button>
-                            {% endif %}
-                          </h2>
-                          <div id="collapse-{{ message.id }}" class="accordion-collapse collapse" 
-                            aria-labelledby="headingOne" data-bs-parent="#accordion-messages">
-                            <div class="accordion-body">
-                              <div class="row">
-                                <div class="col-auto fs-6">
-                                    <p class="fs-6">De: {{ message.name }}</p>
-                                </div>
-                                <div class="col-auto">
-                                    <p class="fs-6">E-mail: {{ message.email }}</p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="fs-6">{{ message.message }}</p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="fs-6 fw-light">Enviada: {{ message.sended_at }}</p>
-                                </div>
-                                {% if not message.read %}
-                                  <form action="{% url 'projects:read_message' %}" method="POST">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="message_id" value="{{ message.id }}">
-                                    <button type="submit" class="btn btn-primary">
-                                        Marcar como lida
-                                        <i class="bi bi-check-lg"></i>
-                                    </button>
-                                  </form>
-                                {% endif %}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    {% endfor %}
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" 
-                      class="btn btn-secondary" 
-                      data-bs-dismiss="modal">
-                      Fechar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% include '../partials/_all-messages.html' %}
           </li>
+
           <li class="nav-item ps-md-3 pt-2 pt-md-0">
             <form action="{% url 'users:logout_view' %}" method="POST">
               {% csrf_token %}
@@ -105,9 +25,11 @@
               </button>
             </form>
           </li>
+
         </ul>
       </div>
     </div>
+
     <div class="row justify-content-center">
       <div class="col-11 col-md-7">
         <h2 class="mb-3 display-6 text-center">Projetos postados</h2>

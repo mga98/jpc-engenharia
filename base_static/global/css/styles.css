@@ -349,14 +349,16 @@ body {
     border-top: 1px solid #5e5e5e
 }
 
-#contact form .form-control {
+#contact form .form-control,
+#registerModal form .form-control {
     background-color: inherit;
     border: none;
     border-bottom: 1px solid var(--color-primary);
     border-radius: 0;
 }
 
-#contact form .form-control:focus {
+#contact form .form-control:focus,
+#registerModal form .form-control {
     box-shadow: none;
 }
 

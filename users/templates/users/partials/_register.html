@@ -1,0 +1,91 @@
+<button class="btn btn-outline-primary fs-md-5" data-bs-toggle="modal" 
+  data-bs-target="#registerModal">
+  <i class="bi bi-person-add fs-6"></i>
+  Novo usuário
+</button>
+<div class="modal fade" id="registerModal" tabindex="-1" 
+  aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Registrar novo usuário</h5>
+        <button type="button" 
+          class="btn-close" 
+          data-bs-dismiss="modal" 
+          aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'users:register_create' %}" method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                {{ register_form.first_name }}
+                <label for="{{ register_form.first_name.id_for_label }}">
+                  {{ register_form.first_name.label }}
+                </label>
+                {{ register_form.first_name.errors }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                {{ register_form.last_name }}
+                <label for="{{ register_form.last_name.id_for_label }}">
+                  {{ register_form.last_name.label }}
+                </label>
+                {{ register_form.last_name.errors }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating mb-3">
+                {{ register_form.username }}
+                <label for="{{ register_form.username.id_for_label }}">
+                  {{ register_form.username.label }}
+                </label>
+                {{ register_form.username.errors }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating mb-3">
+                {{ register_form.email }}
+                <label for="{{ register_form.email.id_for_label }}">
+                  {{ register_form.email.label }}
+                </label>
+                {{ register_form.email.errors }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                {{ register_form.password }}
+                <label for="{{ register_form.password.id_for_label }}">
+                  {{ register_form.password.label }}
+                </label>
+                {{ register_form.password.errors }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                {{ register_form.password_2 }}
+                <label for="{{ register_form.password_2.id_for_label }}">
+                  {{ register_form.password_2.label }}
+                </label>
+                {{ register_form.password_2.errors }}
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" 
+                class="btn btn-outline-primary" 
+                data-bs-dismiss="modal">
+                Fechar
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Cadastrar usuário
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
