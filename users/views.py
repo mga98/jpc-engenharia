@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import Http404
@@ -47,6 +48,7 @@ def login_create(request):
         return redirect(reverse('users:login_view'))
 
 
+@login_required(login_url='users:login_view', redirect_field_name='next')
 def logout_view(request):
     if not request.POST:
         messages.error(request, 'Não foi possível fazer o logout!')
@@ -64,6 +66,7 @@ def logout_view(request):
     return redirect('users:login_view')
 
 
+@login_required(login_url='users:login_view', redirect_field_name='next')
 def dashboard(request):
     projects = Project.objects.all().order_by('-id')
     messages = Messages.objects.all().order_by('-id')
@@ -82,6 +85,7 @@ def dashboard(request):
     )
 
 
+@login_required(login_url='users:login_view', redirect_field_name='next')
 def register_create(request):
     if not request.POST:
         raise Http404

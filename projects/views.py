@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -60,6 +61,7 @@ def project_detail(request, pk):
     )
 
 
+@login_required(login_url='users:login_view', redirect_field_name='next')
 def projects_add(request):
     form = ProjectForm(
         data=request.POST or None,
@@ -111,6 +113,7 @@ def projects_add(request):
     )
 
 
+@login_required(login_url='users:login_view', redirect_field_name='next')
 def read_message(request):
     if not request.POST:
         raise Http404
