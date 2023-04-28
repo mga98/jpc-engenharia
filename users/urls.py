@@ -12,4 +12,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout_view'),
     path('register/', views.register_create, name='register_create'),
     path('delete/', views.delete_project, name='delete_project'),
+    path('edit/<int:pk>', views.edit_project, name='edit_project'),
 ]

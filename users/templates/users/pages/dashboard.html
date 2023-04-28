@@ -25,7 +25,6 @@
               </button>
             </form>
           </li>
-
         </ul>
       </div>
     </div>
@@ -57,7 +56,7 @@
               <p class="fw-light mb-0 fs-6">{{ project.created_at }}</p>
             </div>
             <div class="col-2 d-flex flex-column justify-content-between col-md-1">
-              <button class="btn fs-4 text-color-primary"><i class="bi bi-pencil-square"></i></button>
+              <a href="{% url 'users:edit_project' project.id %}" class="btn fs-4 text-color-primary"><i class="bi bi-pencil-square"></i></a>
               
               <div class="delete-modal-area">
                 {% include '../partials/_delete-project.html' %}

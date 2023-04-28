@@ -6,7 +6,8 @@ from django.http import Http404
 from django.contrib import messages
 
 from .forms import LoginForm, RegisterForm
-from projects.models import Project, Messages
+from projects.forms import ProjectForm, PicturesForm
+from projects.models import Project, Messages, Pictures
 
 
 def login_view(request):
@@ -123,3 +124,59 @@ def delete_project(request):
         )
 
         return redirect('users:dashboard')
+
+
+@login_required(login_url='users:login_view', redirect_field_name='next')
+def edit_project(request, pk):
+    project = get_object_or_404(
+        Project,
+        id=pk,
+    )
+    form_data = ProjectForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+        instance=project,
+    )
+
+    form_pictures = PicturesForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+    )
+
+    status = request.POST.get('status-select')
+    images = request.FILES.getlist('image')
+
+    if form_data.is_valid() and form_pictures.is_valid():
+        project = form_data.save(commit=False)
+
+        if status == 'Pronto':
+            project.status = True
+
+        else:
+            project.status = False
+
+        project.save()
+
+        Pictures.objects.filter(
+            project=project
+        ).delete()
+
+        for img in images:
+            Pictures.objects.create(
+                project=project,
+                image=img
+            )
+
+        messages.success(request, 'Projeto editado com sucesso!')
+
+        return redirect(reverse('users:dashboard'))
+
+    return render(
+        request,
+        'users/pages/edit-project.html',
+        context={
+            'project': project,
+            'form_data': form_data,
+            'form_pictures': form_pictures,
+        }
+    )

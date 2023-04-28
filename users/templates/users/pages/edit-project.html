@@ -1,0 +1,48 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+  <div class="container case">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form action="{% url 'users:edit_project' project.id %}" method="POST" class="mt-md-4 rounded py-3" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h3 class="display-5 text-center">Editar projeto {{ project.title }}</h3>
+          <div class="row justify-content-center">
+            {% comment %} FORM 1 {% endcomment %}
+            {% for field in form_data %}
+              <div class="col-12 mb-4">
+                <label class="form-label" for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+                {{ field }}                        
+              </div>
+            {% endfor %}
+    
+            {% comment %} FORM 2 {% endcomment %}
+            {% for field in form_pictures %}
+                <div class="col-12 mb-4">
+                  <label for="{{ field.id_for_label }}" class="form-label">
+                      {{ field.label }}
+                  </label>
+                  {{ field }}
+                </div>
+            {% endfor %}
+            
+    
+            <div class="col-12 mb-4">
+              <p class="mb-0">Status do projeto:</p>
+              <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
+                  <option selected>Pronto</option>
+                  <option value="1">Em andamento</option>
+              </select>
+            </div>
+    
+            <button type="submit" class="btn btn-outline-primary">
+              Salvar
+            </button>
+          </div>          
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
