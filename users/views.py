@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import Http404
 from django.contrib import messages
@@ -105,3 +105,21 @@ def register_create(request):
     messages.error(request, 'Erro ao cadastrar usuário, verifique os dados!')
 
     return redirect(reverse('users:dashboard'))
+
+
+@login_required(login_url='users:login_view', redirect_field_name='next')
+def delete_project(request):
+    if request.method == 'POST':
+        project_id = request.POST.get('project_id')
+        project = get_object_or_404(
+            Project,
+            id=project_id,
+        )
+        project_title = project.title
+        project.delete()
+
+        messages.success(
+            request, f'Projeto "{ project_title }" deletado com sucesso!'
+        )
+
+        return redirect('users:dashboard')

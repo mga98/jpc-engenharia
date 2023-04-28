@@ -462,19 +462,6 @@ body {
 
 /* DASHBOARD */
 
-#dashboard .dashboard-card .bi:hover,
-#dashboard .dashboard-card button:hover {
-    color: var(--color-primary-hover);
-}
-
-#dashboard .dashboard-card {
-    transition: all 300ms ease-in-out;
-}
-
-#dashboard .dashboard-card:hover {
-    transform: scale(1.01)
-}
-
 #accordion-messages .accordion-header .accordion-button:focus {
     box-shadow: none;
     outline: none;

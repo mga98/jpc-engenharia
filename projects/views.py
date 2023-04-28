@@ -102,7 +102,7 @@ def projects_add(request):
             f'Post criado com sucesso! Clique {link}!'
         )
 
-        return redirect(reverse('projects:home'))
+        return redirect(reverse('users:dashboard'))
 
     return render(
         request,
