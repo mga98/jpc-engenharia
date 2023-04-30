@@ -13,4 +13,5 @@ urlpatterns = [
     path('register/', views.register_create, name='register_create'),
     path('delete/', views.delete_project, name='delete_project'),
     path('edit/<int:pk>', views.edit_project, name='edit_project'),
+    path('message/delete/', views.delete_message, name='delete_message')
 ]

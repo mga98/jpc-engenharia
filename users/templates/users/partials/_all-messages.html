@@ -52,16 +52,28 @@
                     <div class="col-12">
                         <p class="fs-6 fw-light">Enviada: {{ message.sended_at }}</p>
                     </div>
-                    {% if not message.read %}
-                      <form action="{% url 'projects:read_message' %}" method="POST">
+                    <div class="col-6">
+                      {% if not message.read %}
+                        <form action="{% url 'projects:read_message' %}" method="POST">
+                          {% csrf_token %}
+                          <input type="hidden" name="message_id" value="{{ message.id }}">
+                          <button type="submit" class="btn btn-primary">
+                              Marcar como lida
+                              <i class="bi bi-check-lg"></i>
+                          </button>
+                        </form>
+                      {% endif %}
+                    </div>
+                    <div class="col-6">
+                      <form action="{% url 'users:delete_message' %}" method="POST">
                         {% csrf_token %}
-                        <input type="hidden" name="message_id" value="{{ message.id }}">
-                        <button type="submit" class="btn btn-primary">
-                            Marcar como lida
-                            <i class="bi bi-check-lg"></i>
+                        <input type="hidden" name="delete_msg_id" value="{{ message.id }}">
+                        <button type="submit" class="btn btn-outline-danger">
+                          Deletar mensagem
+                          <i class="bi bi-trash"></i>
                         </button>
                       </form>
-                    {% endif %}
+                    </div>
                   </div>
                 </div>
               </div>
