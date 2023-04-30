@@ -4,7 +4,8 @@
   <div class="container case">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form action="{% url 'users:edit_project' project.id %}" method="POST" class="mt-md-4 rounded py-3" enctype="multipart/form-data">
+        <form action="{% url 'users:edit_project' project.id %}" method="POST" 
+        class="mt-md-4 shadow px-3 pb-3 my-5 bg-white rounded py-3" enctype="multipart/form-data">
           {% csrf_token %}
           <h3 class="display-5 text-center">Editar projeto {{ project.title }}</h3>
           <div class="row justify-content-center">
@@ -37,7 +38,7 @@
               </select>
             </div>
     
-            <button type="submit" class="btn btn-outline-primary">
+            <button type="submit" class="btn btn-outline-primary col-6">
               Salvar
             </button>
           </div>          

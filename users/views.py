@@ -157,15 +157,16 @@ def edit_project(request, pk):
 
         project.save()
 
-        Pictures.objects.filter(
-            project=project
-        ).delete()
+        if form_pictures.has_changed():
+            Pictures.objects.filter(
+                project=project
+            ).delete()
 
-        for img in images:
-            Pictures.objects.create(
-                project=project,
-                image=img
-            )
+            for img in images:
+                Pictures.objects.create(
+                    project=project,
+                    image=img
+                )
 
         messages.success(request, 'Projeto editado com sucesso!')
 
