@@ -88,6 +88,13 @@ def projects_add(request):
 
         project.save()
 
+        # Add the thumbnail image to the project pictures
+        Pictures.objects.create(
+            project=project,
+            image=project.thumbnail,
+        )
+
+        # Add the pictures to the project
         for i in images:
             Pictures.objects.create(
                 project=project,

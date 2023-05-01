@@ -166,6 +166,10 @@ def edit_project(request, pk):
                 project=project
             ).delete()
 
+            Pictures.objects.create(
+                project=project,
+                image=project.thumbnail,
+            )
             for img in images:
                 Pictures.objects.create(
                     project=project,
