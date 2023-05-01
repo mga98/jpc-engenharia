@@ -132,6 +132,10 @@ def edit_project(request, pk):
         Project,
         id=pk,
     )
+    pictures = Pictures.objects.filter(
+        project=project,
+    )
+
     form_data = ProjectForm(
         data=request.POST or None,
         files=request.FILES or None,
@@ -177,6 +181,7 @@ def edit_project(request, pk):
         'users/pages/edit-project.html',
         context={
             'project': project,
+            'pictures': pictures,
             'form_data': form_data,
             'form_pictures': form_pictures,
         }

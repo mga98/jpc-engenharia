@@ -187,7 +187,7 @@ body {
 
 /* PROJECTS ADD */
 
-.offcanvas {
+.offcanvas{
     color: var(--color-secondary);
     border-left: 1px solid rgba(255, 255, 255, 0.334);
 }
@@ -211,22 +211,22 @@ body {
     align-items: center;
 }
 
-.offcanvas form {
+#project-form {
     padding: 10px 25px 25px;
 }
 
-.offcanvas form h3 {
+#project-form h3 {
     border-bottom: 1px solid var(--color-primary)
 }
 
-.offcanvas form .form-label,
-.offcanvas form p {
+#project-form .form-label,
+#project-form p {
     color: var(--color-primary);
     font-size: 18px;
 }
 
-.offcanvas form .form-control,
-.offcanvas form .form-select {
+#project-form .form-control,
+#project-form .form-select {
     border: none;
     background-color: inherit;
     border-bottom: 1px solid var(--color-secondary);
@@ -235,13 +235,13 @@ body {
     transition: all 300ms ease-in-out;
 }
 
-.offcanvas form .form-control:focus,
-.offcanvas form .form-select:focus {
+#project-form .form-control:focus,
+#project-form .form-select:focus {
     box-shadow: none;
     border-bottom: 1px solid var(--color-primary);
 }
 
-.offcanvas form .form-select option {
+#project-form .form-select option {
     background-color: var(--color-dark);
 }
 

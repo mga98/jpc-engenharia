@@ -5,17 +5,17 @@
     <div class="row justify-content-center pb-3">
       <h2 class="display-4 text-center pt-2 pt-md-0">Bem vindo(a), {{ request.user }}!</h2>
       <div class="col-12 col-md-7 dashboard-profile rounded-3 my-3">
-        <ul class="nav justify-content-md-center align-items-center">
+        <ul class="nav justify-content-center align-items-center">
 
           <li class="nav-item">
             {% include '../partials/_register.html' %}
           </li>
 
-          <li class="nav-item ps-md-3 ps-4">
+          <li class="nav-item ps-sm-4">
             {% include '../partials/_all-messages.html' %}
           </li>
 
-          <li class="nav-item ps-md-3 pt-2 pt-md-0">
+          <li class="nav-item ps-sm-4">
             <form action="{% url 'users:logout_view' %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="username" value="{{ request.user.username }}">
@@ -34,7 +34,7 @@
         <h2 class="mb-3 display-6 text-center">Projetos postados</h2>
         {% for project in projects %}
           <div class="row bg-white mb-4 mx-0 shadow-lg">
-            <div class="col-12 col-md-3 px-0 bg-white">
+            <div class="col-12 col-lg-3 px-0 bg-white">
               {% if project.thumbnail %}
                 <a href="{% url 'projects:project_detail' project.id %}">
                   <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}-thumb" 
@@ -42,9 +42,9 @@
                 </a>
               {% endif %}
             </div>
-            <div class="col-10 col-md-8 d-flex flex-column justify-content-between py-2">
+            <div class="col-12 col-lg-7 d-flex flex-column justify-content-between py-2">
               <a href="{% url 'projects:project_detail' project.id %}">
-                <h3 class="text-color-primary mb-0">{{ project.title }}</h3>
+                <h3 class="text-color-primary mb-0 fs-4">{{ project.title }}</h3>
               </a>
               <p class="fs-5 mb-4">
                 {% if project.status == True %}
@@ -55,8 +55,11 @@
               </p>
               <p class="fw-light mb-0 fs-6">{{ project.created_at }}</p>
             </div>
-            <div class="col-2 d-flex flex-column justify-content-between col-md-1">
-              <a href="{% url 'users:edit_project' project.id %}" class="btn fs-4 text-color-primary"><i class="bi bi-pencil-square"></i></a>
+            <div class="col-sm-2 d-flex justify-content-md-end px-2">
+              <a href="{% url 'users:edit_project' project.id %}" 
+                class="btn fs-4 px-0 text-color-primary">
+                <i class="bi bi-pencil-square"></i>
+              </a>
               
               <div class="delete-modal-area">
                 {% include '../partials/_delete-project.html' %}
