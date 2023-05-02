@@ -21,7 +21,9 @@
             </div>
 
             <div class="thumb-img col-md-7">
-                <img src="{{ project.thumbnail.url }}" alt="thumb-img" class="img-fluid" id="main">
+                {% if project.thumbnail %}
+                    <img src="{{ project.thumbnail.url }}" alt="thumb-img" class="img-fluid" id="main">
+                {% endif %}
             </div>
         </div>
     </div>

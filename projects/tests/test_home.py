@@ -1,10 +1,10 @@
-from django.test import TestCase
 from django.urls import reverse, resolve
 
 from projects import views
+from utils.test_bases import ProjectsTestBase
 
 
-class ProjectsHomeTest(TestCase):
+class ProjectsHomeTest(ProjectsTestBase):
     def test_home_view_function(self):
         view = resolve(reverse('projects:home'))
 
