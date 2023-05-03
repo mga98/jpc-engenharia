@@ -188,6 +188,8 @@ body {
 /* PROJECTS ADD */
 
 .offcanvas{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(1px);
     color: var(--color-secondary);
     border-left: 1px solid rgba(255, 255, 255, 0.334);
 }
@@ -221,7 +223,7 @@ body {
 
 #project-form .form-label,
 #project-form p {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     font-size: 18px;
 }
 
