@@ -110,6 +110,9 @@ def register_create(request):
 
 @login_required(login_url='users:login_view', redirect_field_name='next')
 def projects_add(request):
+    if not request.POST:
+        raise Http404
+
     form = ProjectForm(
         data=request.POST or None,
         files=request.FILES or None,

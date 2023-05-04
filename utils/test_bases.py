@@ -55,6 +55,13 @@ class ProjectMixin:
             read=read
         )
 
+    def register_and_login(self, username='username', password='123456'):
+        self.make_author()
+        self.client.login(
+            username=username,
+            password=password,
+        )
+
 
 class ProjectsTestBase(TestCase, ProjectMixin):
     def setUp(self) -> None:

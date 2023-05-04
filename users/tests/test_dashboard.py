@@ -18,13 +18,6 @@ class DashboardTest(ProjectsTestBase):
 
         return super().setUp(*args, **kwargs)
 
-    def register_and_login(self, username='username', password='123456'):
-        self.make_author()
-        self.client.login(
-            username=username,
-            password=password,
-        )
-
     def test_dashboard_view_function(self):
         view = resolve(reverse('users:dashboard'))
 
