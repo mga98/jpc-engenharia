@@ -6,6 +6,9 @@ from users import views
 
 class LogoutTest(ProjectsTestBase):
     def register_and_login(self):
+        """
+        create an user and make login using it
+        """
         self.make_author()
         self.client.login(
             username='username',
@@ -13,6 +16,9 @@ class LogoutTest(ProjectsTestBase):
         )
 
     def base_test_function(self, message, method='post', username='username'):
+        """
+        base function for logout_view tests.
+        """
         self.register_and_login()
         url = reverse('users:logout_view')
         if method == 'post':

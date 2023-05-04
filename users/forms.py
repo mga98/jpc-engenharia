@@ -54,18 +54,6 @@ class RegisterForm(forms.ModelForm):
         add_attr(password_2_field, 'class', 'form-control')
         add_attr(password_2_field, 'placeholder', 'Confirme a senha')
 
-    username = forms.CharField(
-        label='Nome de usuário',
-        error_messages={
-            'required': 'Você precisa preencher o campo de usuário!',
-            'min_length': 'O nome de usuário precisa ter pelo menos 4 caracteres!',
-            'max_length': 'O nome de usuário pode ter no máximo 15 caracteres!'
-        },
-        help_text='O nome de usuário precisa ter entre 4 e 15 caracteres!',
-        min_length=4,
-        max_length=15,
-    )
-
     first_name = forms.CharField(
         error_messages={'required': 'Você precisa preencher o campo de primeiro nome!'},
         label='Primeiro nome'
