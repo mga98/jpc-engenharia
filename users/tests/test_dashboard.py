@@ -43,6 +43,16 @@ class DashboardTest(ProjectsTestBase):
 
         self.assertIn(project, response.content.decode('utf-8'))
 
+    def test_dashboard_loads_correct_messages(self):
+        self.send_message()
+        self.register_and_login()
+
+        url = reverse('users:dashboard')
+        response = self.client.get(url)
+        message = 'Message subject'
+
+        self.assertIn(message, response.content.decode('utf-8'))
+
     def test_dashboard_register_succesful(self):
         self.register_and_login()
 

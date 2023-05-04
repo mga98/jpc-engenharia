@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from projects.models import Project, User
+from projects.models import Project, User, Messages
 
 
 class ProjectMixin:
@@ -37,6 +37,22 @@ class ProjectMixin:
             title=title,
             slug=slug,
             status=status,
+        )
+
+    def send_message(
+        self,
+        name='Message author',
+        email='message@email.com',
+        subject='Message subject',
+        message='Message test',
+        read='False',
+    ):
+        return Messages.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message,
+            read=read
         )
 
 
