@@ -223,6 +223,9 @@ def delete_project(request):
 
         return redirect('users:dashboard')
 
+    else:
+        raise Http404
+
 
 @login_required(login_url='users:login_view', redirect_field_name='next')
 def edit_project(request, pk):

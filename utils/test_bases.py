@@ -61,6 +61,13 @@ class ProjectMixin:
             password=password,
         )
 
+    def make_project_and_login(self):
+        self.make_project()
+        self.client.login(
+            username='username',
+            password='123456'
+        )
+
     def base_test_function(
             self, url, method='get', data=None, follow=True
     ):
