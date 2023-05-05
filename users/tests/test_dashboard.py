@@ -6,18 +6,6 @@ from utils.test_bases import ProjectsTestBase
 
 
 class DashboardTest(ProjectsTestBase):
-    def setUp(self, *args, **kwargs):
-        self.form_data = {
-            'first_name': 'User',
-            'last_name': 'Test',
-            'username': 'usertest',
-            'password': '123456',
-            'password_2': '123456',
-            'email': 'test@email.com',
-        }
-
-        return super().setUp(*args, **kwargs)
-
     def test_dashboard_view_function(self):
         view = resolve(reverse('users:dashboard'))
 
@@ -46,7 +34,9 @@ class DashboardTest(ProjectsTestBase):
     def test_dashboard_register_succesful(self):
         self.register_and_login()
         response = self.base_test_function(
-            'users:register_create', method='post', data=self.form_data
+            'users:register_create',
+            method='post',
+            data=self.register_form_data,
         )
         msg = 'Usuário cadastrado com sucesso!'
 
@@ -68,20 +58,24 @@ class DashboardTest(ProjectsTestBase):
     ])
     def test_dashboard_register_empty_fields(self, field, error):
         self.register_and_login()
-        self.form_data[field] = ''
+        self.register_form_data[field] = ''
 
         response = self.base_test_function(
-            'users:register_create', method='post', data=self.form_data
+            'users:register_create',
+            method='post',
+            data=self.register_form_data,
         )
 
         self.assertIn(error, response.content.decode('utf-8'))
 
     def test_passwords_match(self):
         self.register_and_login()
-        self.form_data['password'] = 'error_password'
+        self.register_form_data['password'] = 'error_password'
 
         response = self.base_test_function(
-            'users:register_create', method='post', data=self.form_data
+            'users:register_create',
+            method='post',
+            data=self.register_form_data,
         )
         error = 'Verifique se as senhas são iguais'
 
@@ -90,7 +84,9 @@ class DashboardTest(ProjectsTestBase):
     def test_new_user_can_login(self):
         self.register_and_login()
         response = self.base_test_function(
-            'users:register_create', method='post', data=self.form_data
+            'users:register_create',
+            method='post',
+            data=self.register_form_data,
         )
         self.client.logout()
         self.client.login(

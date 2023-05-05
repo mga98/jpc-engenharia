@@ -69,9 +69,13 @@ class ProjectMixin:
         )
 
     def base_test_function(
-            self, url, method='get', data=None, follow=True
+        self, url, url_kwargs=False, pk=1, method='get', data=None, follow=True
     ):
-        reversed_url = reverse(url)
+        if url_kwargs:
+            reversed_url = reverse(url, kwargs={'pk': pk})
+
+        else:
+            reversed_url = reverse(url)
 
         if method == 'get':
             response = self.client.get(
@@ -86,5 +90,21 @@ class ProjectMixin:
 
 
 class ProjectsTestBase(TestCase, ProjectMixin):
-    def setUp(self) -> None:
-        return super().setUp()
+    def setUp(self, *args, **kwargs):
+        self.form_data = {
+            'title': 'Project title',
+            'status-select': 'Pronto',
+            'thumbnail': '/thumb.png',
+            'image': '/picture.png'
+        }
+
+        self.register_form_data = {
+            'first_name': 'User',
+            'last_name': 'Test',
+            'username': 'usertest',
+            'password': '123456',
+            'password_2': '123456',
+            'email': 'test@email.com',
+        }
+
+        return super().setUp(*args, **kwargs)

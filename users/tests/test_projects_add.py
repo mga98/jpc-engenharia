@@ -6,16 +6,6 @@ from utils.test_bases import ProjectsTestBase
 
 
 class ProjectsAddTest(ProjectsTestBase):
-    def setUp(self, *args, **kwargs):
-        self.form_data = {
-            'title': 'Project title',
-            'status-select': 'Pronto',
-            'thumbnail': '/thumb.png',
-            'image': '/picture.png'
-        }
-
-        return super().setUp(*args, **kwargs)
-
     def test_projects_view_function(self):
         view = resolve(reverse('users:projects_add'))
 
