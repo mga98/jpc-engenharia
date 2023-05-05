@@ -1,9 +1,9 @@
-from django.urls import reverse, resolve
+from django.urls import resolve, reverse
 from parameterized import parameterized
 
-from utils.test_bases import ProjectsTestBase
-from users.forms import LoginForm
 from users import views
+from users.forms import LoginForm
+from utils.test_bases import ProjectsTestBase
 
 
 class LoginTest(ProjectsTestBase):
@@ -24,14 +24,13 @@ class LoginTest(ProjectsTestBase):
         self.assertIs(view.func, views.login_create)
 
     def test_login_create_receive_get_method(self):
-        url = reverse('users:login_create')
-        response = self.client.get(url, follow=True)
+        response = self.base_test_function('users:login_create')
 
         self.assertEqual(response.status_code, 404)
 
     @parameterized.expand([
-            ('username', 'Usuário'),
-            ('password', 'Senha'),
+        ('username', 'Usuário'),
+        ('password', 'Senha'),
     ])
     def test_login_form_labels(self, field, label):
         form = LoginForm()
@@ -51,10 +50,8 @@ class LoginTest(ProjectsTestBase):
 
     def test_succesful_login(self):
         user = self.make_author()
-
-        url = reverse('users:login_create')
-        response = self.client.post(
-            url, data=self.form_data, follow=True
+        response = self.base_test_function(
+            'users:login_create', method='post', data=self.form_data
         )
         msg = f'Bem vindo, {user.username}!'
 
@@ -64,10 +61,8 @@ class LoginTest(ProjectsTestBase):
         self.make_author(
             username='error_username'
         )
-
-        url = reverse('users:login_create')
-        response = self.client.post(
-            url, data=self.form_data, follow=True
+        response = self.base_test_function(
+            'users:login_create', method='post', data=self.form_data
         )
         msg = 'Usuário ou senha inválidos!'
 
@@ -78,9 +73,8 @@ class LoginTest(ProjectsTestBase):
             'username': '',
             'password': '',
         })
-        url = reverse('users:login_create')
-        response = self.client.post(
-            url, data=self.form_data, follow=True
+        response = self.base_test_function(
+            'users:login_create', method='post', data=self.form_data
         )
         msg = 'Não foi possível fazer o login!'
 

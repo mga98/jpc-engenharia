@@ -13,8 +13,7 @@ class ProjectsViewTest(ProjectsTestBase):
     def test_project_view_showing_correct_projects(self):
         self.make_project()
 
-        url = reverse('projects:projects_all')
-        response = self.client.get(url)
+        response = self.base_test_function('projects:projects_all')
         project = 'Project title'
 
         self.assertIn(project, response.content.decode('utf-8'))

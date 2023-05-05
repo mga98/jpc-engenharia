@@ -1,4 +1,4 @@
-from django.urls import reverse, resolve
+from django.urls import resolve, reverse
 
 from projects import views
 from utils.test_bases import ProjectsTestBase
@@ -18,9 +18,8 @@ class ProjectsHomeTest(ProjectsTestBase):
             'message': 'Test message',
         }
 
-        url = reverse('projects:home')
-        response = self.client.post(
-            url, data=contact_form_data, follow=True
+        response = self.base_test_function(
+            'projects:home', method='post', data=contact_form_data
         )
         msg = 'Sua mensagem foi enviada com sucesso!'
 

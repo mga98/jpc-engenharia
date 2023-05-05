@@ -1,7 +1,7 @@
 from django.urls import resolve, reverse
 
-from users import views
 from projects.models import Pictures, Project
+from users import views
 from utils.test_bases import ProjectsTestBase
 
 
@@ -23,9 +23,10 @@ class ProjectsAddTest(ProjectsTestBase):
 
     def test_projects_add_succesful(self):
         self.register_and_login()
-        url = reverse('users:projects_add')
-        response = self.client.post(
-            url, data=self.form_data, follow=True
+        response = self.base_test_function(
+            'users:projects_add',
+            method='post',
+            data=self.form_data,
         )
         msg = 'Post criado com sucesso!'
 
@@ -35,7 +36,6 @@ class ProjectsAddTest(ProjectsTestBase):
 
     def test_projects_add_receive_get_method(self):
         self.register_and_login()
-        url = reverse('users:projects_add')
-        response = self.client.get(url, follow=True)
+        response = self.base_test_function('users:projects_add')
 
         self.assertEqual(response.status_code, 404)

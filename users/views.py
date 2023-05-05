@@ -189,6 +189,24 @@ def read_message(request):
 
 
 @login_required(login_url='users:login_view', redirect_field_name='next')
+def delete_message(request):
+    if request.method == 'POST':
+        message_id = request.POST.get('delete_msg_id')
+        message = get_object_or_404(
+            Messages,
+            id=message_id,
+        )
+        message.delete()
+        messages.success(request, 'Mensagem deletada com sucesso!')
+
+        return redirect(reverse('users:dashboard'))
+
+    messages.error(request, 'Mensagem não pode ser deletada!')
+
+    return redirect(reverse('users:dashboard'))
+
+
+@login_required(login_url='users:login_view', redirect_field_name='next')
 def delete_project(request):
     if request.method == 'POST':
         project_id = request.POST.get('project_id')
@@ -270,21 +288,3 @@ def edit_project(request, pk):
             'form_pictures': form_pictures,
         }
     )
-
-
-@login_required(login_url='users:login_view', redirect_field_name='next')
-def delete_message(request):
-    if request.method == 'POST':
-        message_id = request.POST.get('delete_msg_id')
-        message = get_object_or_404(
-            Messages,
-            id=message_id,
-        )
-        message.delete()
-        messages.success(request, 'Mensagem deletada com sucesso!')
-
-        return redirect(reverse('users:dashboard'))
-
-    messages.error(request, 'Mensagem não pode ser deletada!')
-
-    return redirect(reverse('users:dashboard'))

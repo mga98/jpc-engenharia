@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.urls import reverse
 
 from projects.models import Project, User, Messages
 
@@ -45,14 +46,12 @@ class ProjectMixin:
         email='message@email.com',
         subject='Message subject',
         message='Message test',
-        read='False',
     ):
         return Messages.objects.create(
             name=name,
             email=email,
             subject=subject,
             message=message,
-            read=read
         )
 
     def register_and_login(self, username='username', password='123456'):
@@ -61,6 +60,22 @@ class ProjectMixin:
             username=username,
             password=password,
         )
+
+    def base_test_function(
+            self, url, method='get', data=None, follow=True
+    ):
+        reversed_url = reverse(url)
+
+        if method == 'get':
+            response = self.client.get(
+                reversed_url, data=data, follow=follow
+            )
+        elif method == 'post':
+            response = self.client.post(
+                reversed_url, data=data, follow=follow
+            )
+
+        return response
 
 
 class ProjectsTestBase(TestCase, ProjectMixin):

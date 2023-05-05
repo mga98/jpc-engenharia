@@ -1,8 +1,8 @@
-from django.urls import reverse, resolve
+from django.urls import resolve, reverse
 from parameterized import parameterized
 
-from utils.test_bases import ProjectsTestBase
 from users import views
+from utils.test_bases import ProjectsTestBase
 
 
 class DashboardTest(ProjectsTestBase):
@@ -29,9 +29,7 @@ class DashboardTest(ProjectsTestBase):
             username='username',
             password='123456',
         )
-
-        url = reverse('users:dashboard')
-        response = self.client.get(url, follow=True)
+        response = self.base_test_function('users:dashboard')
         project = 'Project title'
 
         self.assertIn(project, response.content.decode('utf-8'))
@@ -40,18 +38,15 @@ class DashboardTest(ProjectsTestBase):
         self.send_message()
         self.register_and_login()
 
-        url = reverse('users:dashboard')
-        response = self.client.get(url)
+        response = self.base_test_function('users:dashboard')
         message = 'Message subject'
 
         self.assertIn(message, response.content.decode('utf-8'))
 
     def test_dashboard_register_succesful(self):
         self.register_and_login()
-
-        url = reverse('users:register_create')
-        response = self.client.post(
-            url, data=self.form_data, follow=True
+        response = self.base_test_function(
+            'users:register_create', method='post', data=self.form_data
         )
         msg = 'Usuário cadastrado com sucesso!'
 
@@ -59,9 +54,7 @@ class DashboardTest(ProjectsTestBase):
 
     def test_dashboard_register_receive_get_method(self):
         self.register_and_login()
-
-        url = reverse('users:register_create')
-        response = self.client.get(url, follow=True)
+        response = self.base_test_function('users:register_create')
 
         self.assertEqual(response.status_code, 404)
 
@@ -77,21 +70,18 @@ class DashboardTest(ProjectsTestBase):
         self.register_and_login()
         self.form_data[field] = ''
 
-        url = reverse('users:register_create')
-        response = self.client.post(
-            url, data=self.form_data, follow=True,
+        response = self.base_test_function(
+            'users:register_create', method='post', data=self.form_data
         )
 
         self.assertIn(error, response.content.decode('utf-8'))
 
     def test_passwords_match(self):
         self.register_and_login()
-
         self.form_data['password'] = 'error_password'
 
-        url = reverse('users:register_create')
-        response = self.client.post(
-            url, data=self.form_data, follow=True
+        response = self.base_test_function(
+            'users:register_create', method='post', data=self.form_data
         )
         error = 'Verifique se as senhas são iguais'
 
@@ -99,14 +89,10 @@ class DashboardTest(ProjectsTestBase):
 
     def test_new_user_can_login(self):
         self.register_and_login()
-
-        register_url = reverse('users:register_create')
-        self.client.post(
-            register_url, data=self.form_data, follow=True
+        response = self.base_test_function(
+            'users:register_create', method='post', data=self.form_data
         )
-
         self.client.logout()
-
         self.client.login(
             username='usertest',
             password='123456',

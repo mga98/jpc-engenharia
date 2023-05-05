@@ -1,7 +1,7 @@
-from django.urls import reverse, resolve
+from django.urls import resolve, reverse
 
-from utils.test_bases import ProjectsTestBase
 from users import views
+from utils.test_bases import ProjectsTestBase
 
 
 class LogoutTest(ProjectsTestBase):
@@ -15,7 +15,9 @@ class LogoutTest(ProjectsTestBase):
             password='123456'
         )
 
-    def base_test_function(self, message, method='post', username='username'):
+    def base_logout_test_function(
+            self, message, method='post', username='username'
+    ):
         """
         base function for logout_view tests.
         """
@@ -39,18 +41,18 @@ class LogoutTest(ProjectsTestBase):
         self.assertIs(view.func, views.logout_view)
 
     def test_succesful_logout(self):
-        self.base_test_function(
+        self.base_logout_test_function(
             message='Você foi deslogado com sucesso!'
         )
 
     def test_logout_receive_get_method(self):
-        self.base_test_function(
+        self.base_logout_test_function(
             message='Não foi possível fazer o logout!',
             method='get'
         )
 
     def test_invalid_user_logotu(self):
-        self.base_test_function(
+        self.base_logout_test_function(
             message='Usuário inválido!',
             username='error_username',
         )
