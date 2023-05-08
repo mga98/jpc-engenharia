@@ -11,6 +11,8 @@ Site feito para uma empresa de engenharia voltada para instalações elétricas 
 O site foi feito utilizando Python e Django, e tem como objetivo ser um portfólio de projetos e uma página para contato entre clientes e empresa. O adminastrador do site pode publicar/editar/deletar seus projetos que estejam concluidos ou em andamento, receber notificações de novas mensagens de contato e adicionar novos funcionários para administrar o site.
 </p>
 
+![jpchome](https://user-images.githubusercontent.com/95861523/236844593-e9bc1a24-b0ad-4e64-8b7f-65b9938ce17d.png)
+
 <h2> Features </h2>
 
 <ul>
@@ -20,10 +22,6 @@ O site foi feito utilizando Python e Django, e tem como objetivo ser um portfól
 <li>Notificação de mensagens</li>
 <li>Cadastro e autenticação de funcionários</li>
 </ul>
-
-<h2> Screenshots </h2>
-
-
 
 <h2> Tecnologias utilizadas </h2>
 
