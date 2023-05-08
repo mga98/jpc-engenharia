@@ -46,6 +46,8 @@ git clone git@github.com:mga98/jpc-engenharia.git
 ```
 
 <h4> Configurando o projeto </h4>
+<p> Crie um arquivo .env na raiz do projeto com as mesmas constantes indicadas no arquivo
+.env-example e crie uma constante DEBUG = 1 dentro dele (como mostrado no arquivo .env-example).</p>
 <p> Abra o terminal com o ambiente virtual ativo e execute os seguintes comandos: </p>
 
 ```

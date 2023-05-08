@@ -4,36 +4,47 @@
   <div class="container case py-5" id="login-page">
     <div class="row justify-content-center py-5 px-4">
       <div class="col-md-4">
-        <form action="{% url 'users:login_create' %}" method='POST' class="p-5 pt-4 bg-white rounded-3 shadow">
-          {% csrf_token %}
-          <h2 class="text-center display-6 mb-3">Login</h2>
+        {% if not request.user.is_authenticated %}
+          <form action="{% url 'users:login_create' %}" method='POST' class="p-5 pt-4 bg-white rounded-3 shadow">
+            {% csrf_token %}
+            <h2 class="text-center display-6 mb-3">Login</h2>
 
-          <div class="col-12 mb-4">
-            <label for="{{ form.username.id_for_label }}" class="fs-5 form-label">
-              {{ form.username.label }}
-            </label>
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon1">
-                <i class="bi bi-person"></i>
-              </span> 
-              {{ form.username }}
-            </div>    
-          </div>
-
-          <div class="col-12 mb-4">
-            <label for="{{ form.password.id_for_label }}" class="fs-5 form-label">
-              {{ form.password.label }}
-            </label>
-            <div class="input-group">
-              <span class="input-group-text">
-                <i class="bi bi-unlock"></i>
-              </span>
-              {{ form.password }}
+            <div class="col-12 mb-4">
+              <label for="{{ form.username.id_for_label }}" class="fs-5 form-label">
+                {{ form.username.label }}
+              </label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="bi bi-person"></i>
+                </span> 
+                {{ form.username }}
+              </div>    
             </div>
-          </div>
 
-          <button type="submit" class="btn btn-outline-primary col-12">Login</button>
-        </form>
+            <div class="col-12 mb-4">
+              <label for="{{ form.password.id_for_label }}" class="fs-5 form-label">
+                {{ form.password.label }}
+              </label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-unlock"></i>
+                </span>
+                {{ form.password }}
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary col-12">Login</button>
+          </form>
+        {% else %}
+          <p class="text-center col-10">
+            Você já está logado como {{ request.user }}, clique
+            <a href="{% url 'users:dashboard' %}">
+              aqui
+            </a>
+            pra ver sua dashboard!
+          </p>
+        {% endif %}
+        
       </div>
     </div>
   </div>
