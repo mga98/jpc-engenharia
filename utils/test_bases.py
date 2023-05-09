@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from projects.models import Project, User, Messages
+from users.models import Materials
 
 
 class ProjectMixin:
@@ -52,6 +53,18 @@ class ProjectMixin:
             email=email,
             subject=subject,
             message=message,
+        )
+
+    def add_material(
+        self,
+        material='Material name',
+        short_description='Material description',
+        stocked=True,
+    ):
+        return Materials.objects.create(
+            material=material,
+            short_description=short_description,
+            stocked=stocked,
         )
 
     def register_and_login(self, username='username', password='123456'):

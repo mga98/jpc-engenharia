@@ -24,3 +24,10 @@ class ProjectsHomeTest(ProjectsTestBase):
         msg = 'Sua mensagem foi enviada com sucesso!'
 
         self.assertIn(msg, response.content.decode('utf-8'))
+
+    def test_home_showing_corrects_materials(self):
+        self.add_material()
+        response = self.base_test_function('projects:home')
+        material = 'Material name'
+
+        self.assertIn(material, response.content.decode('utf-8'))
