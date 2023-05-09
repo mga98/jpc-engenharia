@@ -31,3 +31,9 @@ class ProjectsHomeTest(ProjectsTestBase):
         material = 'Material name'
 
         self.assertIn(material, response.content.decode('utf-8'))
+
+    def test_home_with_no_materials_added(self):
+        response = self.base_test_function('projects:home')
+        msg = 'Nenhum material encontrado.'
+
+        self.assertIn(msg, response.content.decode('utf-8'))
