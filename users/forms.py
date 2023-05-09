@@ -5,6 +5,26 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 from utils.forms_utils import add_attr
+from .models import Materials
+
+
+class MaterialsForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        add_attr(self.fields['material'], 'placeholder', 'Material')
+        add_attr(self.fields['material'], 'class', 'form-control')
+
+        add_attr(self.fields['short_description'], 'placeholder', 'Descrição')
+        add_attr(self.fields['short_description'], 'class', 'form-control')
+
+        add_attr(self.fields['sample_picture'], 'class', 'form-control')
+        add_attr(self.fields['sample_picture'], 'type', 'file')
+    
+    class Meta:
+        model = Materials
+
+        fields = ('material', 'short_description', 'sample_picture')
 
 
 class LoginForm(forms.Form):

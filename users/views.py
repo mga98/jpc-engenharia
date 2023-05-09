@@ -5,7 +5,8 @@ from django.urls import reverse
 from django.http import Http404
 from django.contrib import messages
 
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, MaterialsForm
+from .models import Materials
 from projects.forms import ProjectForm, PicturesForm
 from projects.models import Project, Messages, Pictures
 
@@ -71,9 +72,15 @@ def logout_view(request):
 def dashboard(request):
     projects = Project.objects.all().order_by('-id')
     messages = Messages.objects.all().order_by('-id')
+    materials = Materials.objects.all().order_by('-id')
 
     register_form_data = request.session.get('register_form_data', None)
     register_form = RegisterForm(register_form_data)
+
+    new_material_form = MaterialsForm(
+        request.POST or None,
+        request.FILES or None,
+    )
 
     return render(
         request,
@@ -82,6 +89,8 @@ def dashboard(request):
             'projects': projects,
             'all_messages': messages,
             'register_form': register_form,
+            'new_material_form': new_material_form,
+            'materials': materials,
         }
     )
 

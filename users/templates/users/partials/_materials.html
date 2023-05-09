@@ -1,0 +1,47 @@
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="offcanvas" 
+  data-bs-target="#offcanvas-materials" aria-controls="offcanvas-materials">
+  <i class="bi bi-bricks"></i>
+  Materiais
+</button>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-materials" 
+  aria-labelledby="offcanvas-materials-label">
+  <div class="offcanvas-header justify-content-end">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" 
+      aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body bg-dark">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto px-0">
+          <h3 class="display-6">Materiais</h3>
+        </div>
+        <div class="col-auto px-0">
+          <button class="btn btn-outline-primary">Adicionar material</button>
+        </div>
+      </div>
+      <div class="row bg-white rounded pt-3 mt-3">
+        {% for material in materials %}
+          <div class="col-12 mb-1">
+            <div class="row justify-content-between align-items-center">
+              <div class="col-6 pb-0">
+                <p class="pt-0 mb-0 text-dark fs-5">
+                  {{ material.material }}
+                </p>
+              </div>
+              <div class="col-auto pb-0">
+                {% if material.stocked %}
+                  <p class="pt-0 mb-0 fs-6">Em estoque</p>
+                {% else %}
+                <p class="pt-0 mb-0 fs-6">Esgotado</p>
+                {% endif %}
+              </div>
+              <div class="col-12">
+                <p class="fs-6">{{ material.short_description }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
