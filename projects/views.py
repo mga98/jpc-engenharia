@@ -4,10 +4,12 @@ from django.urls import reverse
 
 from .forms import MessagesForm
 from .models import Pictures, Project
+from users.models import Materials
 
 
 def home(request):
     messages_form = MessagesForm(data=request.POST or None)
+    materials = Materials.objects.all().order_by('-id')
 
     if messages_form.is_valid():
         messages_form.save()
@@ -21,6 +23,7 @@ def home(request):
         'projects/pages/home.html',
         context={
             'messages_form': messages_form,
+            'materials': materials,
         }
     )
 

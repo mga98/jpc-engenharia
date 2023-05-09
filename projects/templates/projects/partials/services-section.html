@@ -39,8 +39,48 @@
               <li>Gás</li>
               <li>SDPA</li>
             </ul>
-            <a href="" class="col-12 btn btn-dark">Ver mais...</a>
+            <button type="button" class="col-12 btn btn-dark" data-bs-toggle="modal" data-bs-target="#materials-modal">
+              Ver mais...
+            </button>
+            </div>
           </div>
         </div>
       </div>
+
+      {% comment %} MATERIALS MODAL {% endcomment %}
+      <div class="modal fade" id="materials-modal" tabindex="-1" aria-labelledby="materials-modal-label" 
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="materials-modal-label">Materiais</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row justify-content-around">
+                {% for material in materials %}
+                  <div class="col-5 material-card px-0">
+                    {% if material.sample_picture %}
+                      <img src="{{ material.sample_picture.url }}" class="img-fluid" 
+                        alt="{{ material.material }}-picture">
+                    {% endif %}
+                    <div class="material-info px-1 pt-1">
+                      <p class="h5 material-title text-color-primary py-1 mb-0">
+                        {{ material.material }}
+                      </p>
+                      <p class="text-secondary pt-1">{{ material.short_description }}</p>
+                    </div>
+                  </div>
+                {% empty %}
+                  <p>Nenhum material encontrado.</p>
+                {% endfor %}
+              </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
   </section>
