@@ -71,7 +71,7 @@ def logout_view(request):
 @login_required(login_url='users:login_view', redirect_field_name='next')
 def dashboard(request):
     projects = Project.objects.all().order_by('-id')
-    messages = Messages.objects.all().order_by('-id')
+    all_messages = Messages.objects.all().order_by('-id')
     materials = Materials.objects.all().order_by('-id')
 
     register_form_data = request.session.get('register_form_data', None)
@@ -93,6 +93,7 @@ def dashboard(request):
             material.stocked = False
 
         material.save()
+        messages.success(request, 'Material adicionado com sucesso!')
 
         return redirect(reverse('users:dashboard'))
 
@@ -101,7 +102,7 @@ def dashboard(request):
         'users/pages/dashboard.html',
         context={
             'projects': projects,
-            'all_messages': messages,
+            'all_messages': all_messages,
             'register_form': register_form,
             'new_material_form': new_material_form,
             'materials': materials,
