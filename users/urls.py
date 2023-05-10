@@ -15,5 +15,6 @@ urlpatterns = [
     path('projects/add/', views.projects_add, name='projects_add'),
     path('messages/read', views.read_message, name='read_message'),
     path('edit/<int:pk>', views.edit_project, name='edit_project'),
-    path('message/delete/', views.delete_message, name='delete_message')
+    path('message/delete/', views.delete_message, name='delete_message'),
+    path('material/delete/', views.delete_material, name='delete_material')
 ]

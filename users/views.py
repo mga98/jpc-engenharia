@@ -81,6 +81,20 @@ def dashboard(request):
         request.POST or None,
         request.FILES or None,
     )
+    stocked = request.POST.get('stocked')
+
+    if new_material_form.is_valid():
+        material = new_material_form.save(commit=False)
+
+        if stocked == 'True':
+            material.stocked = True
+
+        elif stocked == 'False':
+            material.stocked = False
+
+        material.save()
+
+        return redirect(reverse('users:dashboard'))
 
     return render(
         request,
@@ -93,6 +107,19 @@ def dashboard(request):
             'materials': materials,
         }
     )
+
+
+@login_required(login_url='users:login_view', redirect_field_name='next')
+def delete_material(request):
+    if not request.POST:
+        raise Http404
+
+    material_id = request.POST.get('material_id')
+    material = get_object_or_404(Materials, id=material_id)
+    material.delete()
+
+    messages.success(request, 'Material deletado com sucesso!')
+    return redirect(reverse('users:dashboard'))
 
 
 @login_required(login_url='users:login_view', redirect_field_name='next')
