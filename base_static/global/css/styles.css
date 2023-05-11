@@ -21,6 +21,10 @@ body {
 
 /* BASICS */
 
+.w-97 {
+    width: 97%;
+}
+
 .text-color-primary {
     color: var(--color-primary);
 }
@@ -255,11 +259,6 @@ body {
 
 /* PROJECTS */
 
-#projects {
-    border-top: 1px solid var(--color-gray-0);
-    border-bottom: 1px solid var(--color-gray-0);
-}
-
 #projects .primary-img,
 #projects .secondary-img {
     overflow: hidden;
@@ -301,8 +300,11 @@ body {
 
 /* CONTACT */
 
-#contact {
-    border-top: 1px solid #5e5e5e
+#contact .info-col {
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #contact form .form-control,
@@ -322,10 +324,6 @@ body {
     background-color: white;
     height: 150px;
     border: 1px solid var(--color-primary);
-}
-
-#contact .h5 {
-    color: var(--color-primary);
 }
 
 .map iframe {
@@ -450,7 +448,7 @@ footer h3 {
     }
 
     #services {
-        height: 550px;
+        height: 480px;
     }
     
     #services .services-column {
