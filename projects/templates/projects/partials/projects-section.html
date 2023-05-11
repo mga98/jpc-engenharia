@@ -1,16 +1,17 @@
 {% load static %}
 
-<section class="projects p-2 p-md-5 bg-dark" id="projects">
+<section class="projects p-2 p-md-5" id="projects">
     <div class="container">
-      <div class="row gx-md-5 p-4 rounded-3 bg-white">
+      <div class="row gx-md-5 rounded-3">
         <div class="col-md-7 px-0 shadow primary-img rounded-3">
           <img src="{% static 'global/img/vitra1.jpeg' %}" class="img-fluid" alt="...">
           
         </div>
         <div class="col-md-5">
           <div class="row mt-3 mt-md-0 justify-content-center">
-            <div class="col-12 d-flex shadow rounded-3 align-items-center flex-column py-3 py-md-5">
-              <p class="display-4">Projetos</p>
+            <div class="col-12 d-flex shadow rounded-3 bg-white align-items-center flex-column py-3 py-md-5">
+              <p class="display-4 mb-0">Projetos</p>
+              <p class="fw-light text-center px-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam nisi iusto hic cumque sed reiciendis.</p>
               <a href="{% url 'projects:projects_all' %}" class="btn btn-outline-primary col-5">Ver todos...</a>
             </div>
             <div class="col-12 mt-3 shadow px-0 secondary-img rounded-3 ps-0">

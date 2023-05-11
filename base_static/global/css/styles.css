@@ -257,6 +257,7 @@ body {
 
 #projects {
     border-top: 1px solid var(--color-gray-0);
+    border-bottom: 1px solid var(--color-gray-0);
 }
 
 #projects .primary-img,
