@@ -111,6 +111,12 @@ class ProjectsTestBase(TestCase, ProjectMixin):
             'image': '/picture.png'
         }
 
+        self.material_form_data = {
+            'material': 'Material name',
+            'short_description': 'Material description',
+            'stocked': True,
+        }
+
         self.register_form_data = {
             'first_name': 'User',
             'last_name': 'Test',
