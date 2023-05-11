@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-light fixed-top navbar-expand-lg py-3" id="navbar">
+<nav class="navbar navbar-light fixed-top navbar-expand-lg pt-3 pb-2" id="navbar">
     <div class="container">
         <a href="{% url 'projects:home' %}" class="navbar-brand">
             <img src="{% static 'global/img/logo.png' %}" alt="logo">
@@ -102,7 +102,7 @@
                 <li class="nav-item">
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn" data-bs-toggle="modal" 
+                    <button type="button" class="btn ps-2" data-bs-toggle="modal" 
                         data-bs-target="#add-project-modal">
                         <i class="bi bi-building-add"></i>
                     </button>
@@ -121,14 +121,13 @@
                                     <h3 class="pb-3">Adicionar novo projeto</h3>
                                     <div class="row justify-content-center pt-3">
                                         {% comment %} FORM 1 {% endcomment %}
-                                        {% for field in form %}
-                                
-                                        <div class="col-12 mb-4">
-                                            <label class="form-label" for="{{ field.id_for_label }}">
-                                                {{ field.label }}
-                                            </label>
-                                            {{ field }}                        
-                                        </div>
+                                        {% for field in form %}                             
+                                            <div class="col-12 mb-4">
+                                                <label class="form-label" for="{{ field.id_for_label }}">
+                                                    {{ field.label }}
+                                                </label>
+                                                {{ field }}                        
+                                            </div>
                                         {% endfor %}
                                 
                                         <img id="frame" src="" class="img-fluid"/>  
@@ -150,9 +149,8 @@
                                                 <option value="1">Em andamento</option>
                                             </select>
                                         </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fechar</button>
-                                            <button type="submit" onclick="clearImage()" class="btn btn-primary col-4">
+                                        <div class="modal-footer">
+                                            <button type="submit" onclick="clearImage()" class="btn btn-primary py-2 col-12">
                                                 Adicionar
                                             </button>
                                         </div>

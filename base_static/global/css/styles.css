@@ -122,12 +122,9 @@ body {
 }
 
 .user-nav .bi-envelope,
+.user-nav .bi-building-add,
 .user-nav .bi-person-circle {
-    font-size: 29px;
-}
-
-.user-nav .bi-building-add {
-    font-size: 27px;
+    font-size: 26px;
 }
 
 .user-nav .bi-building-add,
