@@ -47,6 +47,10 @@ body {
     padding: 20px 0;
 }
 
+.shadow {
+    box-shadow: 3px 3px 10px var(--color-gray-0) !important;
+}
+
 /* BUTTONS */
 
 .btn:focus {
@@ -252,30 +256,16 @@ body {
 /* PROJECTS */
 
 #projects {
-    background-color: var(--color-primary);
+    border-top: 1px solid var(--color-gray-0);
 }
 
-#projects .container {
-    background-color: var(--color-secondary);
-    box-shadow: 1px 1px 10px var(--color-dark);
+#projects .primary-img,
+#projects .secondary-img {
+    overflow: hidden;
 }
 
-.projects .col-md-5 {
-    text-align: center;
-}
-
-.projects .carousel {
-    margin-top: 10px;
-}
-
-.projects .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.585);
-    font-size: 12px;
-    padding: 0;
-}
-
-.projects .carousel-caption h5 {
-    font-size: 16px;
+#projects .primary-img .img-fluid {
+    height: 100%;
 }
 
 #projects-link {
@@ -480,21 +470,6 @@ footer h3 {
     }
 
     /* PROJECTS MEDIA */
-
-    .projects .carousel-caption {
-        background-color: rgba(0, 0, 0, 0.585);
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .projects .carousel-caption {
-        background-color: rgba(0, 0, 0, 0.585);
-        
-    }
-    
-    .projects .carousel-caption h5 {
-        font-size: 20px;
-    }
 
     /* PROJECT ADD MEDIA */
 
