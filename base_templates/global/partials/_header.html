@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- NAVBAR -->
-<nav class="navbar fixed-top navbar-expand-lg py-3 navbar-dark bg-dark" id="navbar">
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-3" id="navbar">
     <div class="container">
         <a href="{% url 'projects:home' %}" class="navbar-brand">
             <img src="{% static 'global/img/logo.png' %}" alt="logo">
@@ -32,7 +32,7 @@
             <ul class="user-nav navbar-nav align-items-center">
                 <li class="nav-item">
                     <div class="dropdown notification-dropdown">
-                        <button class="btn text-white notification-btn dropdown-toggle ps-0 pe-1" id="defaultDropdown"
+                        <button class="btn notification-btn dropdown-toggle ps-0 pe-1" id="defaultDropdown"
                             data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
                             <i class="bi bi-envelope"></i>
                             {% if contact_messages %}
@@ -48,7 +48,7 @@
                                     <div class="col-12">
                                         <button type="button" class="btn modal-btn py-2" data-bs-toggle="modal" data-bs-target="#message-modal-{{ message.id }}">
                                             <p class="fs-6 pb-0 mb-0">{{ message.subject }}</p>
-                                            <p class="fw-light pb-0 mb-0">De: {{ message.name }}</p>
+                                            <p class="fw-light pb-0 mb-0 fs-6">De: {{ message.name }}</p>
                                         </button>
                                         
                                     </div>
@@ -101,29 +101,28 @@
                 </li>
                 <li class="nav-item">
 
-                    <!-- OFFCANVAS -->
-                    <button class="btn ps-2 pe-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn" data-bs-toggle="modal" 
+                        data-bs-target="#add-project-modal">
                         <i class="bi bi-building-add"></i>
                     </button>
-        
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                        aria-labelledby="offcanvasRightLabel">
-                        <div class="offcanvas-header">
-                            <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <div class="container col-12">
-            
-                                <!-- NEW PROJECT FORM -->
-                                <form action="{% url 'users:projects_add' %}" method="POST" class="mt-md-4 rounded bg-dark" id="project-form" enctype="multipart/form-data">
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="add-project-modal" tabindex="-1" 
+                        aria-labelledby="add-project-modalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{% url 'users:projects_add' %}" method="POST" id="project-form" enctype="multipart/form-data">
                                     {% csrf_token %}
-                                    <h3 class="display-5 text-center pb-5">Novo projeto</h3>
+                                    <h3 class="pb-3">Adicionar novo projeto</h3>
                                     <div class="row justify-content-center pt-3">
                                         {% comment %} FORM 1 {% endcomment %}
                                         {% for field in form %}
-
+                                
                                         <div class="col-12 mb-4">
                                             <label class="form-label" for="{{ field.id_for_label }}">
                                                 {{ field.label }}
@@ -131,9 +130,9 @@
                                             {{ field }}                        
                                         </div>
                                         {% endfor %}
-
+                                
                                         <img id="frame" src="" class="img-fluid"/>  
-
+                                
                                         {% comment %} FORM 2 {% endcomment %}
                                         {% for field2 in form2 %}
                                         <div class="col-12 mb-4">
@@ -143,7 +142,7 @@
                                             {{ field2 }}
                                         </div>
                                         {% endfor %}
-
+                                
                                         <div class="col-12 mb-4">
                                             <p class="mb-0">Status do projeto:</p>
                                             <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
@@ -151,15 +150,19 @@
                                                 <option value="1">Em andamento</option>
                                             </select>
                                         </div>
-            
-                                        <button type="submit" onclick="clearImage()" class="btn btn-outline-primary">
-                                            Adicionar
-                                        </button>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fechar</button>
+                                            <button type="submit" onclick="clearImage()" class="btn btn-primary col-4">
+                                                Adicionar
+                                            </button>
+                                        </div>
                                     </div>          
                                 </form>
                             </div>
                         </div>
+                        </div>
                     </div>
+                    
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'users:dashboard' %}" class="btn text-white ps-0">

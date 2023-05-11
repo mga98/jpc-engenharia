@@ -3,7 +3,8 @@
     --color-primary-hover: rgb(2, 197, 171) ;
     --color-primary-transparent: rgba(3, 148, 129, 0.71);
     --color-secondary: rgb(231, 231, 231);
-    --color-dark: rgb(52, 58, 64);
+    --color-dark: #32363a;
+    --color-dark-2: #43474a;
     --color-gray-0: rgb(150, 150, 150);
     --color-gray-1: rgb(100, 100, 100);
     --color-gray-2: rgb(70, 70, 70);
@@ -97,11 +98,12 @@ body {
 /* NAVBAR */
 
 .navbar {
-    border-bottom: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--color-gray-0);
+    background-color: var(--color-secondary);
 }
 
 .navbar #navbarNav a {
-    color:var(--color-secondary);
+    color:var(--color-dark);
     font-size: 18px;
 }
 
@@ -131,7 +133,7 @@ body {
 .user-nav .bi-building-add,
 .user-nav .bi-person-circle,
 .user-nav .bi-envelope {
-    color:var(--color-secondary);
+    color:var(--color-dark);
 }
 
 .user-nav .bi-building-add:hover,
@@ -141,7 +143,7 @@ body {
 }
 
 .user-nav .bi-person-circle {
-    border-left: 1px solid var(--color-secondary);
+    border-left: 1px solid var(--color-gray-0);
     padding-left: 17px;
 }
 
@@ -160,7 +162,6 @@ body {
 }
 
 .notification-dropdown .dropdown-menu {
-    background-color: var(--color-secondary);
     width: 230px;
 }
 
@@ -172,7 +173,6 @@ body {
 
 .notification-dropdown .dropdown-menu .modal-btn:hover {
     background-color: var(--color-primary-transparent);
-    transform: scale(1.07);
 }
 
 .modal-backdrop {
@@ -187,13 +187,6 @@ body {
 
 /* PROJECTS ADD */
 
-.offcanvas{
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-    backdrop-filter: blur(1px);
-    color: var(--color-secondary);
-    border-left: 1px solid rgba(255, 255, 255, 0.334);
-}
-
 .frame-img {
     padding: 10px;
     border: 1px solid white;
@@ -201,7 +194,7 @@ body {
 }
 
 .offcanvas-header .btn-close {
-    color: var(--color-secondary);
+    color: var(--color-dark);
 }
 
 .offcanvas-header .btn-close:focus {
@@ -223,28 +216,20 @@ body {
 
 #project-form .form-label,
 #project-form p {
-    color: var(--color-secondary);
+    color: var(--color-dark-2);
     font-size: 18px;
 }
 
 #project-form .form-control,
 #project-form .form-select {
-    border: none;
     background-color: inherit;
-    border-bottom: 1px solid var(--color-secondary);
-    color: var(--color-secondary);
-    border-radius: 0;
+    color: var(--color-dark-2);
     transition: all 300ms ease-in-out;
 }
 
 #project-form .form-control:focus,
 #project-form .form-select:focus {
     box-shadow: none;
-    border-bottom: 1px solid var(--color-primary);
-}
-
-#project-form .form-select option {
-    background-color: var(--color-dark);
 }
 
 /* CASE */
@@ -517,21 +502,7 @@ footer h3 {
     /* PROJECT ADD MEDIA */
 
     .offcanvas {
-        width: 550px;
-    }
-
-    .offcanvas-body {
-        display: block;
-        margin-top: 30px;
-    }
-
-    .offcanvas-body form {
-        font-size: 17px;
-    }
-
-    .offcanvas-body form button {
-        padding: 8px 0;
-        font-size: 18px;
+        width: 500px;
     }
 }
 
