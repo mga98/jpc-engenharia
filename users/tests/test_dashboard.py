@@ -96,6 +96,6 @@ class DashboardTest(ProjectsTestBase):
 
         dashboard_url = reverse('users:dashboard')
         response = self.client.get(dashboard_url)
-        msg = 'Bem vindo(a), usertest!'
+        msg = 'Bem vindo(a), User!'
 
         self.assertIn(msg, response.content.decode('utf-8'))
