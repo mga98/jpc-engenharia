@@ -43,38 +43,37 @@
               </div>
             </a>
           </div>
-          <div class="modal fade" id="materials-modal" tabindex="-1" aria-labelledby="materials-modal-label" 
+          <div class="modal fade" id="materials-modal" tabindex="-1" 
+            aria-labelledby="materials-modal-label" 
               aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="materials-modal-label">Materiais</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row justify-content-around">
+                  <div class="modal-body px-3">
+                    <div class="row justify-content-around my-5">
                       {% for material in materials %}
-                        <div class="col-5 material-card px-0">
-                          {% if material.sample_picture %}
-                            <img src="{{ material.sample_picture.url }}" class="img-fluid" 
-                              alt="{{ material.material }}-picture">
-                          {% endif %}
-                          <div class="material-info px-1 pt-1">
-                            <p class="h5 material-title text-color-primary py-1 mb-0">
-                              {{ material.material }}
-                            </p>
-                            <p class="text-secondary pt-1">{{ material.short_description }}</p>
+                        {% if material.stocked %}
+                          <div class="col-11 overflow-hidden rounded-4 mb-3 shadow bg-white">
+                            <div class="row">
+                              <div class="col-4 px-0">
+                                {% if material.sample_picture %}
+                                  <img src="{{ material.sample_picture.url }}" 
+                                    alt="{{ material.material }}-picture" class="img-fluid rounded-4">
+                                {% endif %}
+                              </div>
+                              <div class="col-8">
+                                <p class="mb-0 fs-4 text-color-primary">
+                                  {{ material.material }}
+                                </p>
+                                <p class="fs-5 fw-light">{{ material.short_description }}</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        {% endif %}
                       {% empty %}
-                        <p>Nenhum material encontrado.</p>
+                          <p>Nenhum material na loja.</p>
                       {% endfor %}
                     </div>
                     
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                   </div>
                 </div>
               </div>
