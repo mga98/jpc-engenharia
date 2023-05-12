@@ -1,12 +1,14 @@
-<button class="btn py-3 shadow col-12 rounded-4 fs-md-5" data-bs-toggle="modal" 
-  data-bs-target="#messagesModal">
-  <i class="bi bi-envelope fs-6"></i>
-  Mensagens
-</button>
+<div class="open-btn">
+  <button class="btn py-3 shadow col-12 rounded-4 fs-md-5" data-bs-toggle="modal" 
+    data-bs-target="#messagesModal">
+    <i class="bi bi-envelope fs-6"></i>
+    Mensagens
+  </button>
+</div>
 <div class="modal fade" id="messagesModal" tabindex="-1" 
   aria-labelledby="messagesModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
+    <div class="modal-content text-dark">
       <div class="modal-header">
         <h5 class="modal-title" id="messageModalLabel">Todas as mensagens</h5>
         <button type="button" 
@@ -29,7 +31,7 @@
                     {{ message.subject }}
                   </button>
                 {% else %}
-                  <button class="accordion-button collapsed bg-color-primary" type="button" 
+                  <button class="accordion-button collapsed bg-color-primary text-white" type="button" 
                     data-bs-toggle="collapse" data-bs-target="#collapse-{{ message.id }}" 
                     aria-expanded="true" aria-controls="collapse-{{ message.id }}">
                   {{ message.subject }}

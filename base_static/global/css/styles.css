@@ -439,13 +439,13 @@ body {
     max-height: 450px;
 }
 
-.dash-options .btn {
+.dash-options .open-btn .btn {
     color: var(--color-secondary);
     text-align: left;
     transition: all 300ms ease-in-out;
 }
 
-.dash-options .btn:hover {
+.dash-options .open-btn .btn:hover {
     color: var(--color-primary);
     transform: scale(1.02);
 }
@@ -456,6 +456,14 @@ body {
 
 .dash-card {
     overflow: hidden;
+}
+
+#messagesModal .accordion-button:not(.collapsed) {
+    background-color: var(--color-dark);
+}
+
+#messagesModal .accordion-button:not(.collapsed) {
+    color: white;
 }
 
 /* FOOTER */
