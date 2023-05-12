@@ -5,20 +5,125 @@
     Materiais
   </button>
 </div>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-materials" 
+<div class="offcanvas offcanvas-start bg-color-secondary" tabindex="-1" id="offcanvas-materials" 
   aria-labelledby="offcanvas-materials-label">
   <div class="offcanvas-header justify-content-end">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" 
       aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body bg-dark">
-    <div class="container">
-      <div class="row align-items-center justify-content-between">
-        <div class="col-auto px-0">
-          <h3 class="display-6">Materiais</h3>
+  <div class="offcanvas-body text-dark">
+    <h3 class="mb-3 display-5 text-center">Materiais</h3>
+    <div class="row pt-5 px-2">
+      <div class="col-7 add-material-btn px-0">
+        <button class="btn shadow mb-3 rounded-4" data-bs-toggle="modal"
+          data-bs-target="#new-material-modal">
+          <i class="bi bi-plus-circle"></i>
+          Adicionar material
+        </button>
+      </div>
+      <div class="modal fade" id="new-material-modal" tabindex="-1" 
+        aria-labelledby="new-material-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-dark" id="new-material-modal-label">
+                Adicionar material
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" 
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-dark">
+              <form action="{% url 'users:dashboard' %}" method="POST" 
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-8 mb-4">
+                    <label class="form-label" for="{{ new_material_form.material.id_for_label }}">
+                        {{ new_material_form.material.label }}
+                    </label>
+                    {{ new_material_form.material }}
+                  </div>
+
+                  <div class="col-4 mb-4">
+                    <label for="" class="form-label">Situação</label>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                        name="stocked" value="True">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Em estoque</label>
+                    </div>
+                  </div>
+
+                  <div class="col-12 mb-4">
+                    <label class="form-label" for="{{ new_material_form.short_description.id_for_label }}">
+                        {{ new_material_form.short_description.label }}
+                    </label>
+                    {{ new_material_form.short_description }}
+                  </div>
+
+                  <div class="col-12 mb-4">
+                    <label class="form-label" for="{{ new_material_form.sample_picture.id_for_label }}">
+                        {{ new_material_form.sample_picture.label }}
+                    </label>
+                    {{ new_material_form.sample_picture }}
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary">Adicionar</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="col-auto px-0">
-          <button class="btn btn-outline-primary" data-bs-toggle="modal" 
+      </div>
+      {% for material in materials %}
+        <div class="col-12 rounded-4 mb-3 shadow bg-white">
+          <div class="row align-items-center">
+            <div class="col-10">
+              <p class="mb-0 fs-5 text-color-primary">
+                {{ material.material }}
+                {% if material.stocked %}
+                  (Em estoque)
+                {% else %}
+                  (Esgotado)
+                {% endif %}
+              </p>
+              <p class="fw-light">{{ material.short_description }}</p>
+            </div>
+            <div class="col-2">
+              <button class="btn rounded-5 text-white shadow bg-color-danger" data-bs-toggle="modal"
+                data-bs-target="#delete-material{{ material.id }}-modal">
+                <i class="bi bi-trash"></i>
+              </button>
+              <div class="modal fade" id="delete-material{{ material.id }}-modal" tabindex="-1" 
+                  aria-labelledby="delete-material{{ material.id }}-modalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <p class="fs-6">Tem certeza de que deseja deletar o material {{ material.material }}?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <form action="{% url 'users:delete_material' %}" method="POST">
+                          {% csrf_token %}
+                          <input type="hidden" name="material_id" value="{{ material.id }}">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="submit" class="btn btn-danger">Deletar</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% comment %} 
+  <button class="btn btn-outline-primary" data-bs-toggle="modal" 
             data-bs-target="#new-material-modal">
             Adicionar material
           </button>
@@ -77,29 +182,8 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row bg-white rounded pt-3 mt-3 align-items-center">
-        {% for material in materials %}
-          <div class="col-12 mb-1">
-            <div class="row justify-content-between align-items-center">
-              <div class="col-6 pb-2">
-                <p class="pt-0 mb-0 text-dark fs-5">
-                  {{ material.material }}
-                </p>
-              </div>
-              <div class="col-auto pb-2">
-                {% if material.stocked %}
-                  <p class="pt-0 mb-0 fs-6">Em estoque</p>
-                {% else %}
-                <p class="pt-0 mb-0 fs-6">Esgotado</p>
-                {% endif %}
-              </div>
-              <div class="col-10 pb-2">
-                <p class="fs-6 mb-0">{{ material.short_description }}</p>
-              </div>
-              <div class="col-2">
-                <button type="button" class="btn" data-bs-toggle="modal" 
+
+          <button type="button" class="btn" data-bs-toggle="modal" 
                 data-bs-target="#delete-material{{ material.id }}-modal">
                   <i class="bi bi-trash"></i>
                 </button>
@@ -122,11 +206,4 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</div>
+{% endcomment %}

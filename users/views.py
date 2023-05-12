@@ -89,7 +89,7 @@ def dashboard(request):
         if stocked == 'True':
             material.stocked = True
 
-        elif stocked == 'False':
+        else:
             material.stocked = False
 
         material.save()
