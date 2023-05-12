@@ -25,6 +25,10 @@ body {
     width: 97%;
 }
 
+.rounded-4 {
+    border-radius: 20px;
+}
+
 .text-color-primary {
     color: var(--color-primary);
 }
@@ -112,7 +116,7 @@ body {
 
 .navbar #navbarNav a {
     color:var(--color-dark);
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .navbar #navbarNav a:hover {
@@ -132,7 +136,7 @@ body {
 .user-nav .bi-envelope,
 .user-nav .bi-building-add,
 .user-nav .bi-person-circle {
-    font-size: 26px;
+    font-size: 28px;
 }
 
 .user-nav .bi-building-add,
@@ -262,6 +266,12 @@ body {
 #projects .primary-img,
 #projects .secondary-img {
     overflow: hidden;
+    transition: all 300ms ease-in-out;
+}
+
+#projects .primary-img:hover,
+#projects .secondary-img:hover {
+    transform: scale(1.01);
 }
 
 #projects .primary-img .img-fluid {
@@ -448,7 +458,7 @@ footer h3 {
     }
 
     #services {
-        height: 480px;
+        height: 450px;
     }
     
     #services .services-column {

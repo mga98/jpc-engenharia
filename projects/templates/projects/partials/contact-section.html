@@ -2,75 +2,80 @@
 
 <section class="" id="contact">
     <div class="container py-3 py-md-3">
-      <div class="row rounded-3 bg-white shadow justify-content-between align-items-center">
-        <div class="col-md-4 bg-dark text-white rounded-3 ">
-          <div class="row info-col align-items-center">
-            <div class="col-10 pt-5">
-              <h2 class="text-color-primary display-6">Entre em contato!</h2>
-              <p class="fw-light">Entre em contato com a equipe de engenharia e/ou loja de materiais de
-                instalações e faça seu orçamento.</p>
-            </div>
-            <div class="col-10 pt-3 mb-3 bg-dark text-white shadow rounded-3">
-              <div class="row">
-                <div class="col-12">
-                  <p class="mb-1 text-color-primary">
-                    <i class="bi bi-whatsapp"></i>
-                    Telefone: <a class="fw-light" href="https://api.whatsapp.com/send/?phone=5519998526007&text&type=phone_number&app_absent=0" target="_blank">(19) 99852-6007</a>
-                  </p>
-                  
+      <div class="row justify-content-center">
+        <div class="col-11 col-md-12">
+          <div class="row rounded-4 bg-white shadow justify-content-between align-items-center">
+            <div class="col-md-4 bg-dark text-white rounded-4 ">
+              <div class="row info-col align-items-center">
+                <div class="col-10 pt-5">
+                  <h2 class="text-color-primary display-6">Entre em contato!</h2>
+                  <p class="fw-light">Entre em contato com a equipe de engenharia e/ou loja de materiais de
+                    instalações e faça seu orçamento.</p>
                 </div>
-                <div class="col-12 mt-3">
-                  <p class="mb-1 text-color-primary">
-                    <i class="bi bi-envelope-at"></i>
-                    E-mail: <span class="fw-light text-white">contato@engenhariajpc.com.br</span>
-                  </p>
-                </div>
-                <div class="col-12 mt-3 mb-3">
-                  <p class="mb-1 text-color-primary">
-                    <i class="bi bi-building"></i>
-                    Endereço:<span class="fw-light text-white">
-                      Av. Engenheiro Antônio Francisco de Paula Souza, 4101, Campinas/SP
-                    </span></p>
+                <div class="col-10 pt-3 mb-3 bg-dark text-white shadow rounded-3">
+                  <div class="row">
+                    <div class="col-12">
+                      <p class="mb-1 text-color-primary">
+                        <i class="bi bi-whatsapp"></i>
+                        Telefone: <a class="fw-light" href="https://api.whatsapp.com/send/?phone=5519998526007&text&type=phone_number&app_absent=0" target="_blank">(19) 99852-6007</a>
+                      </p>
+                      
+                    </div>
+                    <div class="col-12 mt-3">
+                      <p class="mb-1 text-color-primary">
+                        <i class="bi bi-envelope-at"></i>
+                        E-mail: <span class="fw-light text-white">contato@engenhariajpc.com.br</span>
+                      </p>
+                    </div>
+                    <div class="col-12 mt-3 mb-3">
+                      <p class="mb-1 text-color-primary">
+                        <i class="bi bi-building"></i>
+                        Endereço:<span class="fw-light text-white">
+                          Av. Engenheiro Antônio Francisco de Paula Souza, 4101, Campinas/SP
+                        </span></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="col-md-8 ps-5 py-3">
+              <form action="{% url 'projects:home' %}" method="POST" class="pt-3 pe-5 pt-md-0 pb-md-3">
+                {% csrf_token %}
+                <h2>Envie sua mensagem</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                      {{ messages_form.name }}
+                      <label for="{{ messages_form.name.id_for_label }}">{{ messages_form.name.label }}</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                      {{ messages_form.email }}
+                      <label for="{{ messages_form.email.id_for_label }}">{{ messages_form.email.label }}</label>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-floating mb-3">
+                      {{ messages_form.subject }}
+                      <label for="{{ messages_form.subject.id_for_label }}">{{ messages_form.subject.label }}</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      {{ messages_form.message }}
+                      <label for="{{ messages_form.message.id_for_label }}">{{ messages_form.message.label }}</label>
+                    </div>
+                    <button type="submit" class="col-md-3 btn btn-primary mt-3">Enviar mensagem</button>
+                  </div>
+                </div>
+              </form>  
+            </div>
+            
           </div>
         </div>
-        <div class="col-md-8 ps-5 py-3">
-          <form action="{% url 'projects:home' %}" method="POST" class="pt-3 pe-5 pt-md-0 pb-md-3">
-            {% csrf_token %}
-            <h2>Envie sua mensagem</h2>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-floating mb-3">
-                  {{ messages_form.name }}
-                  <label for="{{ messages_form.name.id_for_label }}">{{ messages_form.name.label }}</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating mb-3">
-                  {{ messages_form.email }}
-                  <label for="{{ messages_form.email.id_for_label }}">{{ messages_form.email.label }}</label>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-floating mb-3">
-                  {{ messages_form.subject }}
-                  <label for="{{ messages_form.subject.id_for_label }}">{{ messages_form.subject.label }}</label>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-floating">
-                  {{ messages_form.message }}
-                  <label for="{{ messages_form.message.id_for_label }}">{{ messages_form.message.label }}</label>
-                </div>
-                <button type="submit" class="col-3 btn btn-primary mt-3">Enviar mensagem</button>
-              </div>
-            </div>
-          </form>  
-        </div>
-        
       </div>
+      
       <div class="row">
         <div class="col-12 map pt-4 px-0">
           <iframe
