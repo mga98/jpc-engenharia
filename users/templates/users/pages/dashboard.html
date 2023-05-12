@@ -1,77 +1,71 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-  <div class="container case py-md-5" id="dashboard">
-    <div class="row justify-content-center pb-3">
-      <h2 class="display-4 text-center pt-2 pt-md-0">Bem vindo(a), {{ request.user }}!</h2>
-      <div class="col-12 col-md-7 dashboard-profile rounded-3 my-3">
-        <ul class="nav justify-content-center align-items-center">
-
-          <li class="nav-item">
-            {% include '../partials/_register.html' %}
-          </li>
-          
-          <li class="nav-item ps-sm-4">
-            {% include '../partials/_materials.html' %}
-          </li>
-
-          <li class="nav-item ps-sm-4">
-            {% include '../partials/_all-messages.html' %}
-          </li>
-
-          <li class="nav-item ps-sm-4">
-            <form action="{% url 'users:logout_view' %}" method="POST">
-              {% csrf_token %}
-              <input type="hidden" name="username" value="{{ request.user.username }}">
-              <button type="submit" class="btn btn-outline-danger fs-md-5" href="#">
-                <i class="bi bi-box-arrow-left"></i>
-                Sair
-              </button>
-            </form>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-11 col-md-7">
-        <h2 class="mb-3 display-6 text-center">Projetos postados</h2>
-        {% for project in projects %}
-          <div class="row bg-white mb-4 mx-0 shadow-lg">
-            <div class="col-12 col-lg-3 px-0 bg-white">
-              {% if project.thumbnail %}
-                <a href="{% url 'projects:project_detail' project.id %}">
-                  <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}-thumb" 
-                    class="img-fluid">
-                </a>
-              {% endif %}
-            </div>
-            <div class="col-12 col-lg-7 d-flex flex-column justify-content-between py-2">
-              <a href="{% url 'projects:project_detail' project.id %}">
-                <h3 class="text-color-primary mb-0 fs-4">{{ project.title }}</h3>
-              </a>
-              <p class="fs-5 mb-4">
-                {% if project.status == True %}
-                  Pronto
-                {% else %}
-                  Em andamento
-                {% endif %}
-              </p>
-              <p class="fw-light mb-0 fs-6">{{ project.created_at }}</p>
-            </div>
-            <div class="col-sm-2 d-flex justify-content-md-end px-2">
-              <a href="{% url 'users:edit_project' project.id %}" 
-                class="btn fs-4 px-0 text-color-primary">
-                <i class="bi bi-pencil-square"></i>
-              </a>
-              
-              <div class="delete-modal-area">
-                {% include '../partials/_delete-project.html' %}
-              </div>
-
-            </div>
+  <div class="case container py-3">
+    <div class="row mx-1 mx-md-0 rounded-4 bg-white shadow">
+      <div class="col-md-3 position-relative bg-dark text-white rounded-4 py-5 px-3">
+        <div class="row dash-options pb-5 justify-content-center">
+          <div class="col-12">
+            <h2 class="h4 text-center text-color-primary pt-3">Bem vindo(a), {{ request.user }}!</h2>
           </div>
-        {% endfor %}
+          
+          <div class="col-11 mt-4">
+            {% include '../partials/_register.html' %}
+          </div>
+          <div class="col-11 mt-3">
+            {% include '../partials/_all-messages.html' %}
+          </div>
+          <div class="col-11 mt-3">
+            {% include '../partials/_materials.html' %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 py-5 px-md-5 position-relative">
+        <div class="position-absolute end-0 me-4 me-md-5 mt-md-2">
+          <form action="{% url 'users:logout_view' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{ request.user.username }}">
+            <button type="submit" class="btn bg-dark shadow rounded-5 text-danger fs-md-5" href="#">
+              <i class="bi bi-box-arrow-left"></i>
+            </button>
+          </form>
+        </div>
+        <h2 class="display-6">Projetos postados</h2>
+        <div class="row mt-4 ps-3 ps-md-2 pt-2 dash-projects overflow-auto">
+          {% for project in projects %}
+            <div class="col-11 mb-3 position-relative dash-card shadow rounded-4">
+              <div class="row align-items-center">
+                <div class="col-md-3 px-0 rounded-4">
+                  {% if project.thumbnail %}
+                    <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}-thumb" 
+                    class="img-fluid rounded-4">
+                  {% endif %}
+                </div>
+                <div class="col-7">
+                  <a class="text-color-primary fs-4 base-link" 
+                    href="{% url 'projects:project_detail' project.id %}">
+                    {{ project.title }}
+                  </a>
+                  <p class="fw-light">
+                    {% if project.status == True %}
+                      Pronto
+                    {% else %}
+                      Em andamento
+                    {% endif %}
+                  </p>
+                  <p class="fw-light">{{ project.created_at }}</p>
+                </div>
+                <div class="col-2 me-3 me-md-0 mt-3 projects-options position-absolute end-0 top-0">
+                  <a href="{% url 'users:edit_project' project.id %}" 
+                    class="btn bg-dark text-color-primary shadow rounded-5 mb-2 mb-md-0">
+                    <i class="bi bi-pencil-square"></i>
+                  </a>
+                  {% include '../partials/_delete-project.html' %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
