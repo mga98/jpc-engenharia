@@ -1,60 +1,88 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-  <div class="container case">
+  <div class="container case py-3">
     <div class="row justify-content-center">
-      <div class="col-md-5">
-        <form action="{% url 'users:edit_project' project.id %}" method="POST" 
-          class="mt-md-4px-3 pb-3 my-5 bg-dark text-white rounded shadow py-3" id="project-form" 
-          enctype="multipart/form-data">
-          {% csrf_token %}
-          <h3 class="display-6 text-center pb-4">Editar projeto {{ project.title }}</h3>
-          <div class="row justify-content-center mt-3">
-            {% comment %} FORM 1 {% endcomment %}
-            {% for field in form_data %}
-              <div class="col-12 mb-4">
-                <label class="form-label" for="{{ field.id_for_label }}">
-                    {{ field.label }}
-                </label>
-                {{ field }}
+      <div class="col-11 col-md-7 rounded-4 bg-white shadow">
+        <div class="row justify-content-center">
+          <div class="col-md-4 rounded-4 bg-dark text-white p-3">
+            <div class="row">
+              <div class="col-12 mt-3">
+                <h2 class="h4 text-color-primary">{{ project.title }}</h2>
+                <p class="fs-6 fw-light">
+                  {% if project.status %}
+                    Concluido
+                  {% else %}
+                    Em andamento
+                  {% endif %}
+                </p>
               </div>
-            {% endfor %}
-
-            {% comment %} FORM 2 {% endcomment %}
-            {% for field in form_pictures %}
+              {% if project.thumbnail %}
                 <div class="col-12 mb-4">
-                  <label for="{{ field.id_for_label }}" class="form-label">
-                      {{ field.label }}
-                  </label>
-                  {{ field }}
+                  <p class="fs-5">Foto de capa:</p>
+                  <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}-thumb" class="img-fluid rounded-4">
                 </div>
-            {% endfor %}
-
-            {% if pictures %}
+              {% endif %}
               <div class="col-12 mb-4">
-                <div class="row justify-content-center">
-                  {% for picture in pictures %}
-                    <div class="col-3">
-                      <img class="img-fluid" src="{{ picture.image.url }}" alt="">
+                <p class="fs-5">Fotos atuais do projeto:</p>
+                {% if pictures %}
+                  <div class="col-12">
+                    <div class="row">
+                      {% for picture in pictures %}
+                        <div class="col-6 mb-3">
+                          <img class="img-fluid rounded-3" src="{{ picture.image.url }}" alt="">
+                        </div>
+                      {% endfor %}
                     </div>
-                  {% endfor %}
-                </div>
+                  </div>
+                {% else %}
+                <p class="fw-light my-0 py-0">Este projeto ainda não possui fotos.</p>
+                {% endif %}
               </div>
-            {% endif %}
-
-            <div class="col-12 mb-4">
-              <p class="mb-0">Status do projeto:</p>
-              <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
-                  <option selected>Pronto</option>
-                  <option value="1">Em andamento</option>
-              </select>
             </div>
     
-            <button type="submit" class="btn btn-outline-primary col-6">
-              Salvar
-            </button>
-          </div>          
-        </form>
+          </div>
+          <div class="col-md-8 pt-3 pt-md-5">
+            <form action="{% url 'users:edit_project' project.id %}" method="POST" 
+              class="overflow-hidden" id="project-form" 
+              enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+        
+                {% for field in form_data %}
+                  <div class="col-12 mb-4">
+                    <label class="form-label" for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                  </div>
+                {% endfor %}
+    
+            
+                {% for field in form_pictures %}
+                    <div class="col-12 mb-4">
+                      <label for="{{ field.id_for_label }}" class="form-label">
+                          {{ field.label }}
+                      </label>
+                      {{ field }}
+                    </div>
+                {% endfor %}
+    
+                <div class="col-12 mb-4">
+                  <p class="mb-0">Status do projeto:</p>
+                  <select class="form-select" name="status-select" id="status-select" aria-label="Default select example">
+                      <option selected>Pronto</option>
+                      <option value="1">Em andamento</option>
+                  </select>
+                </div>
+    
+                <button type="submit" class="btn btn-outline-primary rounded-4 col-md-4">
+                  Salvar
+                </button>
+              </div>          
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
