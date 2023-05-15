@@ -34,6 +34,6 @@ class ProjectsHomeTest(ProjectsTestBase):
 
     def test_home_with_no_materials_added(self):
         response = self.base_test_function('projects:home')
-        msg = 'Nenhum material encontrado.'
+        msg = 'Nenhum material na loja.'
 
         self.assertIn(msg, response.content.decode('utf-8'))
