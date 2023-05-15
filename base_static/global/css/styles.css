@@ -387,24 +387,11 @@ body {
 
 .project-imgs img {
     transition: all 300ms ease-in-out;
-    border-radius: 10px;
-    overflow: hidden;
 }
 
 .project-imgs img:hover {
     transform: scale(1.02);
     opacity: 0.8;
-}
-
-.thumb-img {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.449);
-}
-
-.thumb-img img {
-    padding: 12px 1px;
 }
 
 /* LOGIN PAGE */
