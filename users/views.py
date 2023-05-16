@@ -97,6 +97,30 @@ def dashboard(request):
 
         return redirect(reverse('users:dashboard'))
 
+    if request.method == 'POST':
+        material_id = request.POST.get('material-stock')
+        material_stock = Materials.objects.get(id=material_id)
+
+        if material_stock.stocked:
+            material_stock.stocked = False
+            material_stock.save()
+            messages.error(
+                request,
+                f'{material_stock.material} foi removido do estoque.'
+            )
+
+            return redirect(reverse('users:dashboard'))
+
+        else:
+            material_stock.stocked = True
+            material_stock.save()
+            messages.success(
+                request,
+                f'{material_stock.material} foi adicionado ao estoque!'
+            )
+
+            return redirect(reverse('users:dashboard'))
+
     return render(
         request,
         'users/pages/dashboard.html',
