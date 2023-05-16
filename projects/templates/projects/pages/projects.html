@@ -7,19 +7,20 @@
                 <h2 class="display-5 text-center pt-3 pb-3 text-white">Projetos concluidos</h2>
                 <div class="row">
                     {% for project in completed_projects %}
-                        <div class="col-12 mb-4">
-                            <div class="project-card shadow">
-                                {% if project.thumbnail %}
-                                    <div class="project-card-img">
-                                        <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
+                        <a href="{% url 'projects:project_detail' project.id %}">
+                            <div class="col-12 mb-4">
+                                <div class="project-card shadow">
+                                    {% if project.thumbnail %}
+                                        <div class="project-card-img">
+                                            <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
+                                        </div>
+                                    {% endif %}
+                                    <div class="project-card-body">
+                                        <p class="display-5 mb-0 text-center">{{ project.title }}</p>
                                     </div>
-                                {% endif %}
-                                <div class="project-card-body">
-                                    <p class="fs-4 mb-0 text-center">{{ project.title }}</p>
-                                    <a class="text-center" href="{% url 'projects:project_detail' project.id %}">Ver mais...</a>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     {% endfor %}
                 </div>
             </div>
@@ -27,17 +28,18 @@
                 <h2 class="display-5 pt-3 text-center pb-3 text-dark">Projetos em andamento</h2>
                 <div class="row">
                     {% for project in ongoing_projects %}
-                        <div class="col-12 mb-4">
-                            <div class="project-card shadow">
-                                <div class="project-card-img">
-                                    <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
-                                </div>
-                                <div class="project-card-body">
-                                    <p class="fs-4 text-center mb-0">{{ project.title }}</p>
-                                    <a class="text-center" href="{% url 'projects:project_detail' project.id %}">Ver mais...</a>
+                        <a href="{% url 'projects:project_detail' project.id %}">
+                            <div class="col-12 mb-4">
+                                <div class="project-card shadow">
+                                    <div class="project-card-img">
+                                        <img class="img-fluid" src="{{ project.thumbnail.url }}" alt="">
+                                    </div>
+                                    <div class="project-card-body">
+                                        <p class="display-5 text-center mb-0">{{ project.title }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     {% endfor %}
                 </div>
             </div>
