@@ -106,7 +106,7 @@ def dashboard(request):
             material_stock.save()
             messages.error(
                 request,
-                f'{material_stock.material} foi removido do estoque.'
+                f'O estoque de {material_stock.material} foi removido.'
             )
 
             return redirect(reverse('users:dashboard'))
@@ -116,7 +116,7 @@ def dashboard(request):
             material_stock.save()
             messages.success(
                 request,
-                f'{material_stock.material} foi adicionado ao estoque!'
+                f'O estoque de {material_stock.material} foi adicionado!'
             )
 
             return redirect(reverse('users:dashboard'))

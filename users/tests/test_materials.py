@@ -45,3 +45,19 @@ class MaterialsTest(ProjectsTestBase):
         )
 
         self.assertEqual(response.status_code, 404)
+
+    def test_material_stock_change(self):
+        self.register_and_login()
+        material_stocked = self.add_material()
+        material_empty = self.add_material(stocked=False)
+        materials = [material_stocked, material_empty]
+
+        for material in materials:
+            response = self.base_test_function(
+                'users:dashboard',
+                method='post',
+                data={'material-stock': material.id}
+            )
+            msg = f'O estoque de {material.material} foi'
+
+            self.assertIn(msg, response.content.decode('utf-8'))
