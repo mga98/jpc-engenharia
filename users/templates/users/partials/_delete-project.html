@@ -16,11 +16,11 @@
         <p>Você tem certeza que deseja deletar {{ project.title }}?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <form action="{% url 'users:delete_project' %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="project_id" value="{{ project.id }}">
-          <button type="submit" class="btn btn-outline-danger">
+          <button type="submit" class="btn btn-danger">
             Deletar
           </button>
         </form>

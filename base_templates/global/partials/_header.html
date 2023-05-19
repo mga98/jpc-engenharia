@@ -113,13 +113,14 @@
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
+                                <h5 class="modal-title" id="add-project-modalLabel">Adicionar novo projeto</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form action="{% url 'users:projects_add' %}" method="POST" id="project-form" enctype="multipart/form-data">
                                     {% csrf_token %}
-                                    <h3 class="pb-3">Adicionar novo projeto</h3>
-                                    <div class="row justify-content-center pt-3">
+                                    
+                                    <div class="row justify-content-center">
                                         {% comment %} FORM 1 {% endcomment %}
                                         {% for field in form %}                             
                                             <div class="col-12 mb-4">

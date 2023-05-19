@@ -5,7 +5,7 @@
     <div class="row justify-content-center py-5 px-4">
       <div class="col-md-4">
         {% if not request.user.is_authenticated %}
-          <form action="{% url 'users:login_create' %}" method='POST' class="p-5 pt-4 bg-white rounded-3 shadow">
+          <form action="{% url 'users:login_create' %}" method='POST' class="p-5 pt-4 bg-white rounded-4 shadow">
             {% csrf_token %}
             <h2 class="text-center display-6 mb-3">Login</h2>
 
@@ -33,7 +33,7 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-outline-primary col-12">Login</button>
+            <button type="submit" class="btn btn-outline-primary rounded-4 col-12">Login</button>
           </form>
         {% else %}
           <p class="text-center col-10">
